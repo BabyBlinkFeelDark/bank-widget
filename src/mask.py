@@ -1,5 +1,3 @@
-# from src.widget import mask_account_card
-
 def get_mask_card_number(card_num: str) -> str:
     """
     Маскирует номер кредитной карты, оставляя видимыми только первые 6 и последние 4 цифры.
@@ -16,4 +14,3 @@ def get_mask_account(card_num: str) -> str:
     :return: Маскированный номер счета
     """
     return f"**{card_num[-4:]}"
-
