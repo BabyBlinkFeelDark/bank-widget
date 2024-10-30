@@ -1,4 +1,5 @@
-# from src.mask import get_mask_account,get_mask_card_number
+import src.mask
+from src.mask import get_mask_account,get_mask_card_number
 import re
 
 def mask_account_card(card_data):
@@ -12,5 +13,6 @@ def mask_account_card(card_data):
     card_number = "".join(bank_name[-1])
     bank_name.remove(card_number)
     bank_name = " ".join(bank_name)
-    print(bank_name,"   ",card_number)
-    return re.findall(r'\d+',card_data)
+    if bank_name == "Счет":
+        return bank_name + src.mask.get_mask_account(card_number)
+    return bank_name + " " + src.mask.get_mask_card_number(card_number)
