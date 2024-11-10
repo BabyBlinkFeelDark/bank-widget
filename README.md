@@ -10,7 +10,7 @@ Hanking widget is a project for working with card and account numbers.
 ```
 git clone https://github.com/BabyBlinkFeelDark/bank-widget
 ```
-2. Установите зависимости:
+2. Install dependencies:
 ```
 pip install -r requirements.txt
 ```
