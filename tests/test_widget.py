@@ -1,4 +1,7 @@
-#
+import pytest
+
+from src.widget import mask_account_card
+
 # @pytest.mark.parametrize("input_data, expected_output",
 #     [
 #         ("Счет 64686473678894779589","Счет **9589"),

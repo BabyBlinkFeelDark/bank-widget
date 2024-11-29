@@ -16,4 +16,6 @@ def get_mask_account(card_num: str) -> str:
     :param card_num: Номер счета в виде строки.
     :return: Маскированный номер счета
     """
+    if len(card_num) != 20:
+        raise TypeError("Invalid account")
     return f"**{card_num[-4:]}"
