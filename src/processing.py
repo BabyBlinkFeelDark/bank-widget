@@ -1,4 +1,5 @@
-from typing import Any, List, Dict
+import re
+from typing import Any, Dict, List
 
 
 def filter_by_state(in_dicts: List[Dict[str, Any]], state: str = "EXECUTED") -> List[Dict[str, Any]]:
@@ -11,6 +12,8 @@ def filter_by_state(in_dicts: List[Dict[str, Any]], state: str = "EXECUTED") -> 
     :return: Новый список словарей, содержащий только те словари,
              у которых значение ключа 'state' соответствует указанному значению.
     """
+    if state is None or state == "":
+        state = "EXECUTED"
     out_dicts = []
     for d in in_dicts:
         if d.get("state") == state:
@@ -28,4 +31,11 @@ def sort_by_date(in_dicts: List[Dict[str, Any]], sort_by: str = "ASC") -> List[D
     :return: Новый список словарей, отсортированный по дате (ключ 'date')
              в указанном порядке.
     """
+    pattern = r"^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:.\d{1,6})?$"
+    for date in in_dicts:
+        if not re.fullmatch(pattern, date["date"]):
+            raise TypeError("Incorrect date!")
+            return None
+    if sort_by != "DESC":
+        state = "ASC"
     return sorted(in_dicts, key=lambda x: x["date"], reverse=(sort_by == "DESC"))
