@@ -92,7 +92,12 @@ def test_sort_by_date_with_arg(input_data, sort_by, expected_output):
 
     ],
 )
-def test_sort_by_date_with_arg(input_data, sort_by, expected_output):
+def test_sort_by_date_without_arg(input_data, sort_by, expected_output):
     assert sort_by_date(input_data, sort_by) == expected_output
 
 
+@pytest.mark.parametrize("input_data", ([{'id': 939719570, 'state': 'EXECUTED', 'date': '18-06-30T02:08:58.425572'}, {'id': 594226727, 'state': 'CANCELED', 'date': '2018-09-12T21:27:25.241689'}, {'id': 615064591, 'state': 'CANCELED', 'date': '2018-10-14T08:21:33.419441'}]
+))
+def test_incorrect_date(input_data):
+    with pytest.raises(TypeError):
+        sort_by_date(input_data)
