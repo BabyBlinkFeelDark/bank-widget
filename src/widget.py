@@ -1,5 +1,7 @@
-import src.mask
 import re
+
+import src.mask
+
 
 def mask_account_card(card_data: str) -> str:
     """
@@ -16,6 +18,7 @@ def mask_account_card(card_data: str) -> str:
         return " ".join(card_data.split()[:-1]) + " " + src.mask.get_mask_account(card_data.split()[-1])
     return " ".join(card_data.split()[:-1]) + " " + src.mask.get_mask_card_number(card_data.split()[-1])
 
+
 def get_date(current_time) -> str:
     """
     Приводит дату к формату DD.MM.YYYY
@@ -23,7 +26,7 @@ def get_date(current_time) -> str:
     :return: Время в формате DD.MM.YYYY
     """
 
-    pattern = r'^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:.\d{1,6})?$'
+    pattern = r"^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:.\d{1,6})?$"
 
     # Проверка соответствия
     if not re.fullmatch(pattern, current_time):
