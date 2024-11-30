@@ -7,7 +7,7 @@ def mask_account_card(card_data: str) -> str:
     :param card_data: Номер кредитной карты или счета в виде строки.
     :return: Тип вводимых данных (счет или карта) и маскированный номер карты или счета
     """
-    if card_data == None:
+    if card_data is None:
         raise AttributeError("Enter your card/account details")
     if card_data.split()[:-1] == []:
         raise TypeError("Check the correctness of the entered data")
