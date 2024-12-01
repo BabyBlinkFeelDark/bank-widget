@@ -4,6 +4,9 @@
 
 Banking widget is a project for working with card and account numbers.
 You can familiarize yourself with the tests in the file "workspace.xml"
+=======
+Hanking widget is a project for working with card and account numbers.
+
 
 ## Installing:
 
@@ -15,9 +18,17 @@ git clone https://github.com/BabyBlinkFeelDark/bank-widget
 ```
 pip install -r requirements.txt
 ```
-3. Make tests:
+
+## Tests:
+
+For make tests:
 ```
 poetry run pytest --cov    
+```
+
+For update report:
+```
+pytest --cov=src --cov-report=html
 ```
 
 ## Usage:
