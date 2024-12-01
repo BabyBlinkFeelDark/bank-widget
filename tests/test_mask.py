@@ -24,6 +24,9 @@ def test_correct_data_mask_number(input_data):
         ("7790006063922861", "7790 00XX XXXX 2861"),
     ],
 )
+
+
+
 def test_correct_output_mask_number(input_data, output_data):
     assert get_mask_card_number(input_data) == output_data
 
@@ -37,17 +40,12 @@ def test_correct_output_mask_number(input_data, output_data):
         None,
     ],
 )
+
 def test_correct_data_account(input_data):
     with pytest.raises(TypeError):
         get_mask_account(input_data)
 
 
-@pytest.mark.parametrize(
-    "input_data, output_data",
-    [
-        ("64686473678894779589", "**9589"),
-        ("77900061922861063434", "**3434"),
-    ],
-)
-def test_correct_output_mask_account(input_data, output_data):
-    assert get_mask_account(input_data) == output_data
+def test_correct_output_mask_account(test_first_incorrect, test_second_incorrect):
+    assert get_mask_account(test_first_incorrect) == "**9589"
+    assert get_mask_account(test_second_incorrect) == "**3434"
