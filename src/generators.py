@@ -13,11 +13,11 @@ def card_number_generator(start_point: int , end_point : int) -> list:
         ]
         return result
     else:
-        raise IndexError("start_point !> end_point")
+        raise IndexError("start_point < end_point")
 
 
-def filter_by_currency():
-    return 1
+def filter_by_currency(transactions,currency):
+    return [transaction for transaction in transactions if transaction.get("operationAmount").get("currency").get("code") == currency]
 
 
 def transaction_descriptions():
