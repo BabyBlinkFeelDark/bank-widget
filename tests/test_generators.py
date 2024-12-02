@@ -4,14 +4,13 @@ from src.generators import filter_by_currency, transaction_descriptions, card_nu
 @pytest.mark.parametrize(
     "input_spoint,input_enpoint, expected_output",
     [
-        (1,  5, ['0000000000000001',
-                '0000000000000002',
-                '0000000000000003',
-                '0000000000000004',
-                '0000000000000005']),
-        (9, 10, ['0000000000000009',
-                  '0000000000000010', ]),
-        ("1","2",[0]),
+        (1,  5, ['0000 0000 0000 0001',
+                '0000 0000 0000 0002',
+                '0000 0000 0000 0003',
+                '0000 0000 0000 0004',
+                '0000 0000 0000 0005']),
+        (9, 10, ['0000 0000 0000 0009',
+                  '0000 0000 0000 0010', ]),
     ],
 )
 def test_card_generator(input_spoint,input_enpoint, expected_output):

@@ -4,7 +4,10 @@ from typing import Any, Dict, List
 
 def card_number_generator(start_point: int , end_point : int) -> list:
     if start_point < end_point:
-        result = [str(i).zfill(16) for i in range(start_point, end_point + 1)]
+        result = [
+            ' '.join(number[i:i + 4] for i in range(0, len(number), 4))
+            for number in (str(i).zfill(16) for i in range(start_point, end_point + 1))
+        ]
         return result
     else:
         raise IndexError("start_point !> end_point")
