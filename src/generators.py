@@ -17,6 +17,8 @@ def card_number_generator(start_point: int , end_point : int) -> list:
 
 
 def filter_by_currency(transactions,currency):
+    if transactions == []:
+        raise TypeError("There are no transactions!")
     return [transaction for transaction in transactions if transaction.get("operationAmount",{}).get("currency",{}).get("code",{}) == currency]
 
 

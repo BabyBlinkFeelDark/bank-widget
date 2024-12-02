@@ -26,7 +26,7 @@ def test_card_generator(input_spoint,input_enpoint, expected_output):
         ]
     ),
 )
-def test_incorrect_date(input_spoint,input_enpoint):
+def test_incorrect_data_card(input_spoint,input_enpoint):
     with pytest.raises(TypeError):
         card_number_generator(input_spoint,input_enpoint)
 
@@ -41,7 +41,7 @@ def test_incorrect_date(input_spoint,input_enpoint):
         ]
     ),
 )
-def test_incorrect_date(input_spoint,input_enpoint):
+def test_wrong_points(input_spoint,input_enpoint):
     with pytest.raises(IndexError):
         card_number_generator(input_spoint,input_enpoint)
 
@@ -132,4 +132,16 @@ def test_incorrect_date(input_spoint,input_enpoint):
 def test_filter_by_currency(transactions, currency_code, expected_output):
     assert list(filter_by_currency(transactions, currency_code)) == expected_output
 
+@pytest.mark.parametrize(
+    "input",
+    (
+        [],
+        [1],
+        [{}],
+        [""]
+    ),
+)
+def test_incorrect_list(input):
+    with pytest.raises(TypeError):
+        test_filter_by_currency(input)
 
