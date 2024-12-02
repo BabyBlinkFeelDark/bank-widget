@@ -17,7 +17,7 @@ def card_number_generator(start_point: int , end_point : int) -> list:
 
 
 def filter_by_currency(transactions,currency):
-    return [transaction for transaction in transactions if transaction.get("operationAmount").get("currency").get("code") == currency]
+    return [transaction for transaction in transactions if transaction.get("operationAmount",{}).get("currency",{}).get("code",{}) == currency]
 
 
 def transaction_descriptions():
