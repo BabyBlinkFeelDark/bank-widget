@@ -13,7 +13,7 @@ def card_number_generator(start_point: int , end_point : int) -> list:
     if end_point > max_card_number:
         raise IndexError("The card number limit has been exceeded!")
     if start_point >= end_point:
-        raise IndexError("start_point < end_point")
+        raise IndexError("start_point must be less than end_point!")
     if start_point < end_point:
         result = [
             ' '.join(number[i:i + 4] for i in range(0, len(number), 4))
@@ -31,8 +31,10 @@ def filter_by_currency(transactions:list,currency:str) -> list:
     :return: Список транзакций, соответствующих заданному коду валюты.
     :raises TypeError: Если список транзакций пуст или содержит некорректные данные.
     """
-    if transactions == []:
-        raise TypeError("There are no transactions!")
+    if not isinstance(transactions, list) or not transactions:
+        raise TypeError("The transaction list is empty or not a list!")
+    if not all(isinstance(item, dict) for item in transactions):
+        raise TypeError("The transaction list contains incorrect data!")
     return [transaction for transaction in transactions if transaction.get("operationAmount",{}).get("currency",{}).get("code",{}) == currency]
 
 
@@ -44,8 +46,8 @@ def transaction_descriptions(transactions:list) -> list:
     :return: Список строк с описаниями транзакций.
     :raises TypeError: Если список транзакций некорректен или содержит некорректные данные.
     """
-    if not isinstance(transactions, list) or transactions==[] or transactions==[{}] :
-        raise TypeError("Incorrect dataset")
+    if not isinstance(transactions, list) or not transactions:
+        raise TypeError("Invalid or empty transaction list!")
     if not all(isinstance(item, dict) for item in transactions):
-        raise TypeError("The list contains incorrect data")
+        raise TypeError("The transaction list contains incorrect data!")
     return [transaction.get("description") for transaction in transactions if transaction.get("description")!=None]
