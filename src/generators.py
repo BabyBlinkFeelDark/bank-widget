@@ -55,6 +55,6 @@ def transaction_descriptions(transactions: list) -> list:
         raise TypeError("Invalid or empty transaction list!")
     if not all(isinstance(item, dict) for item in transactions):
         raise TypeError("The transaction list contains incorrect data!")
-    return [transaction.get("description")
-            for transaction in transactions
-            if transaction.get("description") is not None]
+    return [
+        transaction.get("description") for transaction in transactions if transaction.get("description") is not None
+    ]
