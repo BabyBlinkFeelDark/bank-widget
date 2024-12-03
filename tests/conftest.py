@@ -56,3 +56,6 @@ def test_transaction_descriptions():
                 },
             ]
 
+@pytest.fixture
+def empty_lists():
+    return ([], [1], [{}], [""])

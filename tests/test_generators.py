@@ -132,31 +132,16 @@ def test_wrong_points(input_spoint,input_enpoint):
 def test_filter_by_currency(transactions, currency_code, expected_output):
     assert list(filter_by_currency(transactions, currency_code)) == expected_output
 
-@pytest.mark.parametrize(
-    "input",
-    (
-        [],
-        [1],
-        [{}],
-        [""]
-    ),
-)
-def test_incorrect_list(input):
+
+def test_incorrect_list():
     with pytest.raises(TypeError):
-        test_filter_by_currency(input)
+        test_filter_by_currency(empty_lists)
+
 
 def test_correct_output_transaction_descriptions(test_transaction_descriptions):
     assert transaction_descriptions(test_transaction_descriptions) == ["Перевод организации", "Перевод организации"]
 
-@pytest.mark.parametrize(
-    "input",
-    (
-        [],
-        [1],
-        [{}],
-        [""]
-    ),
-)
-def test_incorrect_list_transaction_descriptions(input):
+
+def test_incorrect_list_transaction_descriptions():
     with pytest.raises(TypeError):
-        transaction_descriptions(input)
+        transaction_descriptions(empty_lists)

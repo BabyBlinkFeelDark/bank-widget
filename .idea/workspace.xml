@@ -5,7 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="dcb54d01-dff3-4abf-ad3e-e53af91387ed" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/generators.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/generators.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/conftest.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/conftest.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_generators.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_generators.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,36 +51,38 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Python tests.Python tests in test_mask.py.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests in test_widget.py.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.pytest for test_generators.test_card_generator.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.pytest for test_generators.test_empty_list.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.pytest for test_generators.test_filter_by_currency.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.pytest for test_generators.test_incorrect_date.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.pytest for test_generators.test_incorrect_list.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.pytest for test_generators.test_real_card_number.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.pytest for test_mask.test_correct_data_account.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.pytest for test_mask.test_correct_output_mask_account.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.pytest for test_mask.test_correct_output_mask_number.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.pytest for test_processing.test_filter_by_state_with_agr.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.pytest for test_processing.test_filter_by_state_without_arg.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.pytest for test_processing.test_incorrect_date.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.pytest for test_processing.test_sort_by_date_with_arg.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.pytest for test_processing.test_sort_by_date_without_arg.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.pytest in test_processing.py.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.pytest in test_widget.py.executor&quot;: &quot;Run&quot;,
-    &quot;Python.main.executor&quot;: &quot;Run&quot;,
-    &quot;Python.mask.executor&quot;: &quot;Run&quot;,
-    &quot;Python.processing.executor&quot;: &quot;Run&quot;,
-    &quot;Python.widget.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;feature/homework__10__1&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Python tests.Python tests in test_mask.py.executor": "Run",
+    "Python tests.Python tests in test_widget.py.executor": "Run",
+    "Python tests.pytest for test_generators.test_card_generator.executor": "Run",
+    "Python tests.pytest for test_generators.test_correct_output_transaction_descriptions.executor": "Run",
+    "Python tests.pytest for test_generators.test_empty_list.executor": "Run",
+    "Python tests.pytest for test_generators.test_filter_by_currency.executor": "Run",
+    "Python tests.pytest for test_generators.test_incorrect_date.executor": "Run",
+    "Python tests.pytest for test_generators.test_incorrect_list.executor": "Run",
+    "Python tests.pytest for test_generators.test_incorrect_list_transaction_descriptions.executor": "Run",
+    "Python tests.pytest for test_generators.test_real_card_number.executor": "Run",
+    "Python tests.pytest for test_mask.test_correct_data_account.executor": "Run",
+    "Python tests.pytest for test_mask.test_correct_output_mask_account.executor": "Run",
+    "Python tests.pytest for test_mask.test_correct_output_mask_number.executor": "Run",
+    "Python tests.pytest for test_processing.test_filter_by_state_with_agr.executor": "Run",
+    "Python tests.pytest for test_processing.test_filter_by_state_without_arg.executor": "Run",
+    "Python tests.pytest for test_processing.test_incorrect_date.executor": "Run",
+    "Python tests.pytest for test_processing.test_sort_by_date_with_arg.executor": "Run",
+    "Python tests.pytest for test_processing.test_sort_by_date_without_arg.executor": "Run",
+    "Python tests.pytest in test_processing.py.executor": "Run",
+    "Python tests.pytest in test_widget.py.executor": "Run",
+    "Python.main.executor": "Run",
+    "Python.mask.executor": "Run",
+    "Python.processing.executor": "Run",
+    "Python.widget.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "feature/homework__10__1",
+    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
   }
-}</component>
-  <component name="RunManager" selected="Python tests.pytest for test_generators.test_incorrect_list">
+}]]></component>
+  <component name="RunManager" selected="Python tests.pytest for test_generators.test_incorrect_list_transaction_descriptions">
     <configuration name="main" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="homework" />
       <option name="ENV_FILES" value="" />
@@ -103,7 +106,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="pytest for test_generators.test_card_generator" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
+    <configuration name="pytest for test_generators.test_correct_output_transaction_descriptions" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
       <module name="homework" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -116,7 +119,7 @@
       <option name="_new_keywords" value="&quot;&quot;" />
       <option name="_new_parameters" value="&quot;&quot;" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_generators.test_card_generator&quot;" />
+      <option name="_new_target" value="&quot;test_generators.test_correct_output_transaction_descriptions&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
@@ -154,23 +157,6 @@
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="pytest for test_generators.test_incorrect_date" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
-      <module name="homework" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tests" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="_new_keywords" value="&quot;&quot;" />
-      <option name="_new_parameters" value="&quot;&quot;" />
-      <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_generators.test_incorrect_date&quot;" />
-      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
-      <method v="2" />
-    </configuration>
     <configuration name="pytest for test_generators.test_incorrect_list" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
       <module name="homework" />
       <option name="ENV_FILES" value="" />
@@ -188,13 +174,30 @@
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
+    <configuration name="pytest for test_generators.test_incorrect_list_transaction_descriptions" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
+      <module name="homework" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tests" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_keywords" value="&quot;&quot;" />
+      <option name="_new_parameters" value="&quot;&quot;" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;test_generators.test_incorrect_list_transaction_descriptions&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python tests.pytest for test_generators.test_incorrect_list_transaction_descriptions" />
+        <item itemvalue="Python tests.pytest for test_generators.test_correct_output_transaction_descriptions" />
         <item itemvalue="Python tests.pytest for test_generators.test_incorrect_list" />
         <item itemvalue="Python tests.pytest for test_generators.test_empty_list" />
         <item itemvalue="Python tests.pytest for test_generators.test_filter_by_currency" />
-        <item itemvalue="Python tests.pytest for test_generators.test_incorrect_date" />
-        <item itemvalue="Python tests.pytest for test_generators.test_card_generator" />
       </list>
     </recent_temporary>
   </component>
