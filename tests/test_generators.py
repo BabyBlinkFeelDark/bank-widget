@@ -145,3 +145,18 @@ def test_incorrect_list(input):
     with pytest.raises(TypeError):
         test_filter_by_currency(input)
 
+def test_correct_output_transaction_descriptions(test_transaction_descriptions):
+    assert transaction_descriptions(test_transaction_descriptions) == ["Перевод организации", "Перевод организации"]
+
+@pytest.mark.parametrize(
+    "input",
+    (
+        [],
+        [1],
+        [{}],
+        [""]
+    ),
+)
+def test_incorrect_list(input):
+    with pytest.raises(TypeError):
+        test_filter_by_currency(input)
