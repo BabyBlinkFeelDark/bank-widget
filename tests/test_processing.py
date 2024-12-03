@@ -177,8 +177,8 @@ def test_sort_by_date_without_arg(input_data, sort_by, expected_output):
     (
         [
             {"id": 939719570, "state": "EXECUTED", "date": "18-06-30T02:08:58.425572"},
-            {"id": 594226727, "state": "CANCELED", "date": "2018-09-12T21:27:25.241689"},
-            {"id": 615064591, "state": "CANCELED", "date": "2018-10-14T08:21:33.419441"},
+            {"id": 594226727, "state": "CANCELED", "date": "09-2018-12T21:27:25.241689"},
+            {"id": 615064591, "state": "CANCELED", "date": "28-10-14T08:21:33.419441"},
         ]
     ),
 )
