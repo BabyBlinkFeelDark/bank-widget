@@ -157,6 +157,6 @@ def test_correct_output_transaction_descriptions(test_transaction_descriptions):
         [""]
     ),
 )
-def test_incorrect_list(input):
+def test_incorrect_list_transaction_descriptions(input):
     with pytest.raises(TypeError):
-        test_filter_by_currency(input)
+        transaction_descriptions(input)

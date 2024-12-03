@@ -22,8 +22,8 @@ def filter_by_currency(transactions:list,currency:str) -> list:
 
 
 def transaction_descriptions(transactions:list) -> list:
-    if not isinstance(transactions, list) or transactions==[]:
+    if not isinstance(transactions, list) or transactions==[] or transactions==[{}] :
         raise TypeError("Incorrect dataset")
     if not all(isinstance(item, dict) for item in transactions):
-        raise ValueError("The list contains incorrect data")
+        raise TypeError("The list contains incorrect data")
     return [transaction.get("description") for transaction in transactions if transaction.get("description")!=None]
