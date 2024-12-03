@@ -19,7 +19,8 @@ git clone https://github.com/BabyBlinkFeelDark/bank-widget
 pip install -r requirements.txt
 ```
 
-##🧪 Tests
+🧪 ##Tests
+
 **Запустите тесты с покрытием кода:**
 
 ```
@@ -32,7 +33,7 @@ poetry run pytest --cov
 pytest --cov=src --cov-report=html
 ```
 
-##📦 About Modules
+📦 ##About Modules
 В этом разделе кратко описываются добавленные модули. Все модули находятся в пакете src.
 
 `mask.py` 
