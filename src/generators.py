@@ -20,7 +20,7 @@ def card_number_generator(start_point: int, end_point: int) -> list:
             " ".join(number[i : i + 4] for i in range(0, len(number), 4))
             for number in (str(i).zfill(16) for i in range(start_point, end_point + 1))
         ]
-        return result
+    return result
 
 
 def filter_by_currency(transactions: list, currency: str) -> list:

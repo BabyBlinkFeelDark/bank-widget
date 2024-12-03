@@ -19,7 +19,7 @@ def mask_account_card(card_data: str) -> str:
     return " ".join(card_data.split()[:-1]) + " " + src.mask.get_mask_card_number(card_data.split()[-1])
 
 
-def get_date(current_time) -> str:
+def get_date(current_time: str) -> str:
     """
     Приводит дату к формату DD.MM.YYYY
     :param current_time: Текущее время
@@ -31,5 +31,4 @@ def get_date(current_time) -> str:
     # Проверка соответствия
     if not re.fullmatch(pattern, current_time):
         raise TypeError("Incorrect date!")
-        return None
     return current_time[8:10] + "." + current_time[5:7] + "." + current_time[:4]
