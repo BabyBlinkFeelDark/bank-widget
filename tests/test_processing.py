@@ -185,5 +185,3 @@ def test_sort_by_date_without_arg(input_data, sort_by, expected_output):
 def test_incorrect_date(input_data):
     with pytest.raises(TypeError):
         sort_by_date(input_data)
-
-
