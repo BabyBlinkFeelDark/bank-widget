@@ -8,10 +8,9 @@ def log(file_name=None):
             log_message = f"{func.__name__} ok"
 
             if file_name:
-                # Получаем абсолютный путь к директории в корне проекта
-                dir_path = os.path.join(os.getcwd(), os.path.dirname(file_name))
-
-                # Проверяем, существует ли каталог, и если нет, создаем его
+                dir_path=os.path.join(os.getcwd()[:-4],"log")
+                file_path=str(dir_path +"/"+ file_name + ".txt")
+                print(file_path)
                 if dir_path and not os.path.exists(dir_path):
                     os.makedirs(dir_path)
 
@@ -20,14 +19,14 @@ def log(file_name=None):
             except Exception as e:
                 log_message = f"{func.__name__} error: {e}. Inputs: {args}\n"
                 if file_name:
-                    with open(file_name, "a") as log_file:
+                    with open(file_path, "a") as log_file:
                         log_file.write(log_message)
                 else:
                     print(log_message)
                 return None
 
             if file_name:
-                with open(file_name, "a") as log_file:
+                with open(file_path, "a") as log_file:
                     log_file.write(log_message)
             else:
 

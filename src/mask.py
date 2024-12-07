@@ -24,5 +24,5 @@ def get_mask_account(card_num: str) -> str:
         raise TypeError("Invalid account")
     return f"**{card_num[-4:]}"
 
-get_mask_card_number("123467815135678")
+# get_mask_card_number("123467815135678")
 get_mask_account("6468647367889779589")
