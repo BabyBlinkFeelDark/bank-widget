@@ -13,7 +13,7 @@ def get_mask_card_number(card_num: str) -> str:
     else:
         return card_num[:4] + " " + card_num[4:6] + "XX XXXX " + card_num[-4:]
 
-
+@log("file.txt")
 def get_mask_account(card_num: str) -> str:
     """
     Маскирует номер счета, оставляя видимыми только последние 4 цифры.
@@ -24,4 +24,5 @@ def get_mask_account(card_num: str) -> str:
         raise TypeError("Invalid account")
     return f"**{card_num[-4:]}"
 
-get_mask_card_number("123456781345678")
+# get_mask_card_number("12345678151345678")
+# get_mask_account("64686473678894779589")

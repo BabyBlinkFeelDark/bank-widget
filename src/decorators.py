@@ -8,9 +8,13 @@
 #         return wrapper
 #     return log_wrap
 
+import sys
+
+
 def log(file_name=None):
     def log_wrap(func):
         def wrapper(*args, **kwargs):
+            print(f"{func.__name__} ok")
             log_message = f"{func.__name__} ok\n"
             try:
                 result = func(*args, **kwargs)
@@ -32,5 +36,7 @@ def log(file_name=None):
             return result
 
         return wrapper
+
     return log_wrap
+
 
