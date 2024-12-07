@@ -1,9 +1,5 @@
-max_card_number = 9999999999999999
-
-
 def card_number_generator(start_point: int, end_point: int) -> list:
     """
-
     Генерирует список номеров карт в формате строк с разбивкой каждые 4 символа пробелом.
 
     :param start_point: Начальная точка генерации номеров (включительно).
@@ -11,16 +7,41 @@ def card_number_generator(start_point: int, end_point: int) -> list:
     :return: Список строк с номерами карт, разделенными пробелами каждые 4 цифры.
     :raises IndexError: Если end_point превышает лимит max_card_number или start_point >= end_point.
     """
+    max_card_number = 9999999999999999  # Максимальное значение карты
+    if not isinstance(start_point, int) and not isinstance(end_point, int):
+        raise TypeError("start_point and end_point must be integers")
+    if start_point > end_point:
+        raise ValueError("start_point must be less than or equal to end_point")
+
     if end_point > max_card_number:
-        raise IndexError("The card number limit has been exceeded!")
-    if start_point >= end_point:
-        raise IndexError("start_point must be less than end_point!")
-    if start_point < end_point:
-        result = [
-            " ".join(number[i : i + 4] for i in range(0, len(number), 4))
-            for number in (str(i).zfill(16) for i in range(start_point, end_point + 1))
-        ]
+        raise ValueError(f"The end_point cannot exceed {max_card_number}")
+
+    def infinite_sequence(start: int):
+        point = start
+        while True:
+            yield point
+            point += 1
+
+    card_numbers = infinite_sequence(start_point)
+
+    result = []
+    for _ in range(end_point - start_point + 1):
+        card_number = str(next(card_numbers)).zfill(16)  # Получить одно значение
+        formatted_card = " ".join(card_number[i : i + 4] for i in range(0, 16, 4))
+        result.append(formatted_card)
+
     return result
+
+    # if end_point > max_card_number:
+    #     raise IndexError("The card number limit has been exceeded!")
+    # if start_point >= end_point:
+    #     raise IndexError("start_point must be less than end_point!")
+    # if start_point < end_point:
+    #     result = [
+    #         " ".join(number[i : i + 4] for i in range(0, len(number), 4))
+    #         for number in (str(i).zfill(16) for i in range(start_point, end_point + 1))
+    #     ]
+    # return result
 
 
 def filter_by_currency(transactions: list, currency: str) -> list:
