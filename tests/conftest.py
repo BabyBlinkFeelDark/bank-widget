@@ -1,4 +1,4 @@
-import pytest
+import pytest, os
 
 
 @pytest.fixture
@@ -44,3 +44,13 @@ def test_transaction_descriptions():
 @pytest.fixture
 def empty_lists():
     return ([], [1], [{}], [""])
+
+@pytest.fixture
+def clean_log_file():
+    """Fixture для очистки файла логов перед каждым тестом"""
+    log_path = '/home/babyblinkfeeldark/PycharmProjects/homework/logs/log_decorators.txt'
+    if os.path.exists(log_path):
+        os.remove(log_path)
+    yield
+    if os.path.exists(log_path):
+        os.remove(log_path)

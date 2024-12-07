@@ -1,3 +1,10 @@
-Sat Dec  7 19:18:01 2024: get_mask_card_number ok
-Sat Dec  7 19:18:01 2024: get_mask_account error: Invalid account. Inputs: ('6468647367889779589',)
+Sat Dec  7 19:47:36 2024: get_mask_card_number error: Invalid number. Inputs: ('',)
+
+Sat Dec  7 19:48:34 2024: get_mask_card_number error: Invalid number. Inputs: ('',)
+
+Sat Dec  7 19:49:19 2024: get_mask_card_number error: Invalid number. Inputs: ('',)
+
+Sat Dec  7 19:52:28 2024: get_mask_card_number error: Invalid number. Inputs: ('700079228960636',)
+
+Sat Dec  7 19:52:52 2024: get_mask_card_number error: Invalid number. Inputs: ('',)
 

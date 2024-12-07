@@ -53,7 +53,7 @@ def log(isLogs: bool = False) -> Callable:
                 else:
                     print(log_message)
                     print("")
-                return None
+                raise e
 
             if isLogs:
                 with open(file_path, "a") as log_file:
@@ -79,12 +79,21 @@ def file_creater(dir: str = "") -> str:
     :param dir: Директория, в которой должен быть создан файл (по умолчанию - "logs").
     :return: Путь к созданному лог-файлу.
     """
-    stack = inspect.stack()
-    caller_frame = stack[1]
-    caller_module = inspect.getmodule(caller_frame[0])
-    dir_path: str = os.path.join(os.getcwd()[:-4], dir)
-    if dir_path and not os.path.exists(dir_path):
+    project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+
+    # Путь к папке для логов в корневой директории
+    dir_path = os.path.join(project_root, dir)
+
+    # Если директория не существует, создаем её
+    if not os.path.exists(dir_path):
         os.makedirs(dir_path)
-    file_name: str = f"log_{os.path.basename(caller_module.__file__).replace('.py', '')}"
-    file_path: str = str(dir_path + "/" + file_name + ".txt")
+
+    # Формируем имя лог-файла на основе имени модуля, который вызвал декоратор
+    caller_frame = inspect.stack()[1]
+    caller_module = inspect.getmodule(caller_frame[0])
+    file_name = f"log_{os.path.basename(caller_module.__file__).replace('.py', '')}"
+
+    # Формируем полный путь к файлу
+    file_path = os.path.join(dir_path, f"{file_name}.txt")
+
     return file_path

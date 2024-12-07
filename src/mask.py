@@ -1,7 +1,7 @@
 from src.decorators import log
 
 
-@log(True)
+@log()
 def get_mask_card_number(card_num: str) -> str:
     """
     Маскирует номер кредитной карты, оставляя видимыми только первые 6 и последние 4 цифры.
@@ -25,6 +25,6 @@ def get_mask_account(card_num: str) -> str:
         raise TypeError("Invalid account")
     return f"**{card_num[-4:]}"
 
-
-get_mask_card_number("7000792289606361")
-get_mask_account("6468647367889779589")
+#
+# get_mask_card_number("")
+# get_mask_account("6468647367889779589")
