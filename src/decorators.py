@@ -6,17 +6,8 @@ def log(isLogs=False):
     def log_wrap(func):
         def wrapper(*args, **kwargs):
             log_message = f"{time.ctime()}: {func.__name__} ok"
-            dir_path = os.path.join(os.getcwd()[:-4], "log")
-            if dir_path and not os.path.exists(dir_path):
-                os.makedirs(dir_path)
-
-            if not isinstance(isLogs, str):
-                file_name = f"log_{func.__name__}"
-                file_path=str(dir_path +"/"+ file_name + ".txt")
-            elif not isinstance(isLogs, boolean):
-                file_name = f"log_{isLogs}"
-                file_path = str(dir_path + "/" + file_name + ".txt")
-
+            if isLogs:
+                file_path = file_creater(func, isLogs, dir="logs")
             try:
                 result = func(*args, **kwargs)
             except Exception as e:
@@ -44,4 +35,15 @@ def log(isLogs=False):
 
     return log_wrap
 
-
+def file_creater(current_func, cfile=None, dir = ""):
+    dir_path = os.path.join(os.getcwd()[:-4], dir)
+    if dir_path and not os.path.exists(dir_path):
+        os.makedirs(dir_path)
+    if not isinstance(cfile, str):
+        file_name = f"log_{str(current_func.__name__)}"
+        file_path = str(dir_path + "/" + file_name + ".txt")
+    elif not isinstance(cfile, boolean):
+        file_name = f"log_{current_func.__name__}"
+        file_path = str(dir_path + "/" + file_name + ".txt")
+        print(file_path)
+    return str(file_path)
