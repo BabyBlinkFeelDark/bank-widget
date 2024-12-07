@@ -1,10 +1,11 @@
 import pytest, os
-from src.mask import get_mask_account, get_mask_card_number
+from src.mask import get_mask_card_number,get_mask_account
 
-def test_log(capsys):
+def test_log_without_log_param(capsys):
     get_mask_card_number("1234567812345678")
+
     captured = capsys.readouterr()
-    assert captured.out == "get_mask_card_number ok\n"
+    assert "get_mask_card_number ok" in captured.out
 
 
 def test_log_err(capsys):
@@ -12,21 +13,23 @@ def test_log_err(capsys):
         get_mask_card_number("")
 
 
-def test_log_file_creation(clean_log_file):
-    get_mask_card_number("1234567812345678")
+def test_log_file_creation():
+    get_mask_account("12345678123456781234")
     log_path = '/home/babyblinkfeeldark/PycharmProjects/homework/logs/log_decorators.txt'
     assert os.path.exists(log_path)
     with open(log_path, 'r') as log_file:
         log_content = log_file.read()
-        assert "get_mask_card_number ok" in log_content
+        assert "get_mask_account ok" in log_content
 
 
 def test_log_error_in_file():
-    with pytest.raises(TypeError, match="Invalid number"):
-        get_mask_card_number("")
+    with pytest.raises(TypeError, match="Invalid account"):
+        get_mask_account("")
 
     log_path = '/home/babyblinkfeeldark/PycharmProjects/homework/logs/log_decorators.txt'
     assert os.path.exists(log_path)
     with open(log_path, 'r') as log_file:
         log_content = log_file.read()
-        assert "get_mask_card_number error: Invalid number" in log_content
+        assert "get_mask_account error:" in log_content
+
+

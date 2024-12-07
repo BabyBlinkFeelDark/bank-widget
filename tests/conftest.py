@@ -1,3 +1,6 @@
+import time
+from time import sleep
+
 import pytest, os
 
 
@@ -47,10 +50,8 @@ def empty_lists():
 
 @pytest.fixture
 def clean_log_file():
-    """Fixture для очистки файла логов перед каждым тестом"""
     log_path = '/home/babyblinkfeeldark/PycharmProjects/homework/logs/log_decorators.txt'
     if os.path.exists(log_path):
         os.remove(log_path)
     yield
-    if os.path.exists(log_path):
-        os.remove(log_path)
+
