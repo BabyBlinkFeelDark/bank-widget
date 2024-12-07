@@ -1,2 +1,3 @@
-get_mask_account error: Invalid account. Inputs: ('6468647367889779589',)
-get_mask_account error: Invalid account. Inputs: ('6468647367889779589',)
+Sat Dec  7 18:19:12 2024: get_mask_card_number ok
+Sat Dec  7 18:19:12 2024: get_mask_account error: Invalid account. Inputs: ('6468647367889779589',)
+
