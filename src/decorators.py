@@ -1,4 +1,4 @@
-import os, time
+import os, time, inspect
 from xmlrpc.client import boolean
 
 
@@ -36,14 +36,12 @@ def log(isLogs=False):
     return log_wrap
 
 def file_creater(current_func, cfile=None, dir = ""):
+    stack = inspect.stack()
+    caller_frame = stack[1]
+    caller_module = inspect.getmodule(caller_frame[0])
     dir_path = os.path.join(os.getcwd()[:-4], dir)
     if dir_path and not os.path.exists(dir_path):
         os.makedirs(dir_path)
-    if not isinstance(cfile, str):
-        file_name = f"log_{str(current_func.__name__)}"
-        file_path = str(dir_path + "/" + file_name + ".txt")
-    elif not isinstance(cfile, boolean):
-        file_name = f"log_{current_func.__name__}"
-        file_path = str(dir_path + "/" + file_name + ".txt")
-        print(file_path)
+    file_name = f"log_{os.path.basename(caller_module.__file__).replace('.py', '')}"
+    file_path = str(dir_path + "/" + file_name + ".txt")
     return str(file_path)
