@@ -1,16 +1,21 @@
 import os, time
+from xmlrpc.client import boolean
+
 
 def log(isLogs=False):
     def log_wrap(func):
         def wrapper(*args, **kwargs):
             log_message = f"{time.ctime()}: {func.__name__} ok"
+            dir_path = os.path.join(os.getcwd()[:-4], "log")
+            if dir_path and not os.path.exists(dir_path):
+                os.makedirs(dir_path)
 
-            if isLogs:
+            if not isinstance(isLogs, str):
                 file_name = f"log_{func.__name__}"
-                dir_path=os.path.join(os.getcwd()[:-4],"log")
                 file_path=str(dir_path +"/"+ file_name + ".txt")
-                if dir_path and not os.path.exists(dir_path):
-                    os.makedirs(dir_path)
+            elif not isinstance(isLogs, boolean):
+                file_name = f"log_{isLogs}"
+                file_path = str(dir_path + "/" + file_name + ".txt")
 
             try:
                 result = func(*args, **kwargs)
