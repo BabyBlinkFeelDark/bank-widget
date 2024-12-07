@@ -1,3 +1,7 @@
+from src.decorators import log
+
+
+@log
 def get_mask_card_number(card_num: str) -> str:
     """
     Маскирует номер кредитной карты, оставляя видимыми только первые 6 и последние 4 цифры.
