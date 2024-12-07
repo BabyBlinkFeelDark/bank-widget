@@ -6,8 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="dcb54d01-dff3-4abf-ad3e-e53af91387ed" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/decorators.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/decorators.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/mask.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/mask.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -203,8 +201,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python tests.pytest for test_decorators.test_log_err" />
         <item itemvalue="Python tests.pytest for test_decorators.test_log" />
+        <item itemvalue="Python tests.pytest for test_decorators.test_log_err" />
         <item itemvalue="Python tests.pytest for test_generators.test_card_generator" />
         <item itemvalue="Python.generators" />
         <item itemvalue="Python tests.pytest for test_generators.test_incorrect_list_transaction_descriptions" />

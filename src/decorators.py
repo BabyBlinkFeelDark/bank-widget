@@ -1,21 +1,20 @@
-# def log(file_name=""):
-#     def log_wrap(func):
-#         def wrapper(*args, **kwargs):
-#             print(f"Вызов функции: {func.__name__}")
-#             result = func(*args, **kwargs)
-#             print(result)
-#             return result
-#         return wrapper
-#     return log_wrap
-
-import sys
-
+import os
 
 def log(file_name=None):
     def log_wrap(func):
         def wrapper(*args, **kwargs):
+
             # print(f"{func.__name__} ok")
             log_message = f"{func.__name__} ok"
+
+            if file_name:
+                # Получаем абсолютный путь к директории в корне проекта
+                dir_path = os.path.join(os.getcwd(), os.path.dirname(file_name))
+
+                # Проверяем, существует ли каталог, и если нет, создаем его
+                if dir_path and not os.path.exists(dir_path):
+                    os.makedirs(dir_path)
+
             try:
                 result = func(*args, **kwargs)
             except Exception as e:
@@ -25,9 +24,9 @@ def log(file_name=None):
                         log_file.write(log_message)
                 else:
                     print(log_message)
-                raise
+                return None
 
-            if file_name is not None:
+            if file_name:
                 with open(file_name, "a") as log_file:
                     log_file.write(log_message)
             else:
