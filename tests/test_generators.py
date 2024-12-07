@@ -44,7 +44,7 @@ def test_incorrect_data_card(input_spoint, input_enpoint):
     ([(2, 1), (109, 9), (9999999999999998, 10000000000000000)]),
 )
 def test_wrong_points(input_spoint, input_enpoint):
-    with pytest.raises(IndexError):
+    with pytest.raises(ValueError):
         card_number_generator(input_spoint, input_enpoint)
 
 
