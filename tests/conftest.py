@@ -1,4 +1,7 @@
-import pytest
+import time
+from time import sleep
+
+import pytest, os
 
 
 @pytest.fixture
@@ -44,3 +47,11 @@ def test_transaction_descriptions():
 @pytest.fixture
 def empty_lists():
     return ([], [1], [{}], [""])
+
+@pytest.fixture
+def clean_log_file():
+    log_path = '/home/babyblinkfeeldark/PycharmProjects/homework/logs/log_decorators.txt'
+    if os.path.exists(log_path):
+        os.remove(log_path)
+    yield
+
