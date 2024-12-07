@@ -1,0 +1,1 @@
+get_mask_card_number error: Invalid number. Inputs: ('12345678151345678',)

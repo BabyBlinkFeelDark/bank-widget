@@ -14,8 +14,8 @@ import sys
 def log(file_name=None):
     def log_wrap(func):
         def wrapper(*args, **kwargs):
-            print(f"{func.__name__} ok")
-            log_message = f"{func.__name__} ok\n"
+            # print(f"{func.__name__} ok")
+            log_message = f"{func.__name__} ok"
             try:
                 result = func(*args, **kwargs)
             except Exception as e:
@@ -27,10 +27,11 @@ def log(file_name=None):
                     print(log_message)
                 raise
 
-            if file_name:
+            if file_name is not None:
                 with open(file_name, "a") as log_file:
                     log_file.write(log_message)
             else:
+
                 print(log_message)
 
             return result
