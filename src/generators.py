@@ -16,7 +16,7 @@ def card_number_generator(start_point: int, end_point: int) -> list:
     if end_point > max_card_number:
         raise ValueError(f"The end_point cannot exceed {max_card_number}")
 
-    def infinite_sequence(start):
+    def infinite_sequence(start: int):
         point = start
         while True:
             yield point
@@ -31,8 +31,6 @@ def card_number_generator(start_point: int, end_point: int) -> list:
         result.append(formatted_card)
 
     return result
-
-
 
     # if end_point > max_card_number:
     #     raise IndexError("The card number limit has been exceeded!")
