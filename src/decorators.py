@@ -1,15 +1,17 @@
-import os, time, inspect
-from xmlrpc.client import boolean
+import inspect
+import os
+import time
+from typing import Any, Callable, Optional
 
 
-def log(isLogs=False):
-    def log_wrap(func):
-        def wrapper(*args, **kwargs):
-            log_message = f"{time.ctime()}: {func.__name__} ok"
+def log(isLogs: bool = False) -> Callable:
+    def log_wrap(func: Callable[..., str]) -> Callable[..., Optional[str]]:
+        def wrapper(*args: Any, **kwargs: Any) -> Optional[str]:
+            log_message: str = f"{time.ctime()}: {func.__name__} ok"
             if isLogs:
-                file_path = file_creater(func, isLogs, dir="logs")
+                file_path: str = file_creater(dir="logs")
             try:
-                result = func(*args, **kwargs)
+                result: str = func(*args, **kwargs)
             except Exception as e:
                 log_message = f"{time.ctime()}: {func.__name__} error: {e}. Inputs: {args}\n"
                 if isLogs:
@@ -35,13 +37,14 @@ def log(isLogs=False):
 
     return log_wrap
 
-def file_creater(current_func, cfile=None, dir = ""):
+
+def file_creater(dir: str = "") -> str:
     stack = inspect.stack()
     caller_frame = stack[1]
     caller_module = inspect.getmodule(caller_frame[0])
-    dir_path = os.path.join(os.getcwd()[:-4], dir)
+    dir_path: str = os.path.join(os.getcwd()[:-4], dir)
     if dir_path and not os.path.exists(dir_path):
         os.makedirs(dir_path)
-    file_name = f"log_{os.path.basename(caller_module.__file__).replace('.py', '')}"
-    file_path = str(dir_path + "/" + file_name + ".txt")
-    return str(file_path)
+    file_name: str = f"log_{os.path.basename(caller_module.__file__).replace('.py', '')}"
+    file_path: str = str(dir_path + "/" + file_name + ".txt")
+    return file_path

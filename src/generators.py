@@ -1,3 +1,6 @@
+from typing import Generator
+
+
 def card_number_generator(start_point: int, end_point: int) -> list:
     """
     Генерирует список номеров карт в формате строк с разбивкой каждые 4 символа пробелом.
@@ -16,7 +19,7 @@ def card_number_generator(start_point: int, end_point: int) -> list:
     if end_point > max_card_number:
         raise ValueError(f"The end_point cannot exceed {max_card_number}")
 
-    def infinite_sequence(start: int):
+    def infinite_sequence(start: int) -> Generator[int, None, None]:
         point = start
         while True:
             yield point
