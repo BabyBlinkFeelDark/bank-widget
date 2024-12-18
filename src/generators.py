@@ -67,6 +67,11 @@ def transaction_descriptions(transactions: list) -> list:
         raise TypeError("Invalid or empty transaction list!")
     if not all(isinstance(item, dict) for item in transactions):
         raise TypeError("The transaction list contains incorrect data!")
+
     for transaction in transactions:
-        if transaction.get("description") is not None:
-            yield transaction.get("description")
+        # Проверяем, что "description" есть и является строкой
+        description = transaction.get("description")
+        if description is None or not isinstance(description, str):
+            raise TypeError("Each transaction must have a valid 'description' field!")
+
+        yield description

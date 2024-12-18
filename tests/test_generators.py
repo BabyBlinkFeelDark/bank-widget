@@ -118,4 +118,4 @@ def test_correct_output_transaction_descriptions(test_transaction_descriptions):
 
 def test_incorrect_list_transaction_descriptions(empty_lists):
     with pytest.raises(TypeError):
-        transaction_descriptions(empty_lists)
+        list(transaction_descriptions(empty_lists))
