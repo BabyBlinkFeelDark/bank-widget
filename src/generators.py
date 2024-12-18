@@ -52,6 +52,9 @@ def filter_by_currency(transactions: list, currency: str) -> list:
         if transaction.get("operationAmount", {}).get("currency", {}).get("code", {}) == currency:
             yield transaction
 
+
+
+
 def transaction_descriptions(transactions: list) -> list:
     """
     Извлекает описания транзакций из списка.
@@ -64,6 +67,6 @@ def transaction_descriptions(transactions: list) -> list:
         raise TypeError("Invalid or empty transaction list!")
     if not all(isinstance(item, dict) for item in transactions):
         raise TypeError("The transaction list contains incorrect data!")
-    return [
-        transaction.get("description") for transaction in transactions if transaction.get("description") is not None
-    ]
+    for transaction in transactions:
+        if transaction.get("description") is not None:
+            yield transaction.get("description")
