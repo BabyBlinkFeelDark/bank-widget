@@ -61,7 +61,7 @@ def transaction_descriptions(transactions: list) -> list:
 
     :param transactions: Список транзакций, каждая из которых представлена словарем.
     :return: Список строк с описаниями транзакций.
-    :raises TypeError: Если список транзакций некорректен или содержит некорректные данные.
+    :raises TypeError: Если список транзакций некорректен.
     """
     if not isinstance(transactions, list) or not transactions:
         raise TypeError("Invalid or empty transaction list!")
@@ -69,9 +69,8 @@ def transaction_descriptions(transactions: list) -> list:
         raise TypeError("The transaction list contains incorrect data!")
 
     for transaction in transactions:
-        # Проверяем, что "description" есть и является строкой
         description = transaction.get("description")
-        if description is None or not isinstance(description, str):
-            raise TypeError("Each transaction must have a valid 'description' field!")
+        if isinstance(description, str):
+            yield description
 
-        yield description
+
