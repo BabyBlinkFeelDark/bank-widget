@@ -27,24 +27,11 @@ def card_number_generator(start_point: int, end_point: int) -> list:
 
     card_numbers = infinite_sequence(start_point)
 
-    result = []
-    for _ in range(end_point - start_point + 1):
-        card_number = str(next(card_numbers)).zfill(16)  # Получить одно значение
-        formatted_card = " ".join(card_number[i : i + 4] for i in range(0, 16, 4))
-        result.append(formatted_card)
+    for number in range(start_point, end_point + 1):
+        card_number = str(number).zfill(16)  # Приведение к 16 символам с лидирующими нулями
+        formatted_card = " ".join(card_number[i : i + 4] for i in range(0, 16, 4))  # Разделение каждые 4 символа
+        yield formatted_card
 
-    return result
-
-    # if end_point > max_card_number:
-    #     raise IndexError("The card number limit has been exceeded!")
-    # if start_point >= end_point:
-    #     raise IndexError("start_point must be less than end_point!")
-    # if start_point < end_point:
-    #     result = [
-    #         " ".join(number[i : i + 4] for i in range(0, len(number), 4))
-    #         for number in (str(i).zfill(16) for i in range(start_point, end_point + 1))
-    #     ]
-    # return result
 
 
 def filter_by_currency(transactions: list, currency: str) -> list:

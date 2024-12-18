@@ -3,7 +3,7 @@ from src.generators import filter_by_currency, transaction_descriptions, card_nu
 
 
 @pytest.mark.parametrize(
-    "input_spoint,input_enpoint, expected_output",
+    "input_spoint, input_enpoint, expected_output",
     [
         (
             1,
@@ -27,7 +27,8 @@ from src.generators import filter_by_currency, transaction_descriptions, card_nu
     ],
 )
 def test_card_generator(input_spoint, input_enpoint, expected_output):
-    assert card_number_generator(input_spoint, input_enpoint) == expected_output
+    result = list(card_number_generator(input_spoint, input_enpoint))
+    assert result == expected_output
 
 
 @pytest.mark.parametrize(
