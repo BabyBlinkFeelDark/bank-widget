@@ -33,7 +33,6 @@ def card_number_generator(start_point: int, end_point: int) -> list:
         yield formatted_card
 
 
-
 def filter_by_currency(transactions: list, currency: str) -> list:
     """
     Фильтрует список транзакций, возвращая только те, где код валюты совпадает с переданным.
@@ -53,8 +52,6 @@ def filter_by_currency(transactions: list, currency: str) -> list:
             yield transaction
 
 
-
-
 def transaction_descriptions(transactions: list) -> list:
     """
     Извлекает описания транзакций из списка.
@@ -72,5 +69,3 @@ def transaction_descriptions(transactions: list) -> list:
         description = transaction.get("description")
         if isinstance(description, str):
             yield description
-
-
