@@ -2,7 +2,7 @@ import time
 from typing import Any, Callable, Optional
 
 
-def log(filename: str = "file") -> Callable:
+def log(filename: str = "") -> Callable:
     """
     Декоратор для логирования выполнения функций.
 

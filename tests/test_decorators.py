@@ -15,7 +15,7 @@ def test_log_err(capsys):
 
 def test_log_file_creation():
     get_mask_account("12345678123456781234")
-    log_path = '/home/babyblinkfeeldark/PycharmProjects/homework/logs/log_decorators.txt'
+    log_path = '/home/babyblinkfeeldark/PycharmProjects/homework/tests/file1.txt'
     assert os.path.exists(log_path)
     with open(log_path, 'r') as log_file:
         log_content = log_file.read()
@@ -26,7 +26,7 @@ def test_log_error_in_file():
     with pytest.raises(TypeError, match="Invalid account"):
         get_mask_account("")
 
-    log_path = '/home/babyblinkfeeldark/PycharmProjects/homework/logs/log_decorators.txt'
+    log_path = '/home/babyblinkfeeldark/PycharmProjects/homework/tests/file1.txt'
     assert os.path.exists(log_path)
     with open(log_path, 'r') as log_file:
         log_content = log_file.read()
