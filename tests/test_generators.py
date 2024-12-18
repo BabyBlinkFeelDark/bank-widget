@@ -37,7 +37,7 @@ def test_card_generator(input_spoint, input_enpoint, expected_output):
 )
 def test_incorrect_data_card(input_spoint, input_enpoint):
     with pytest.raises(TypeError):
-        card_number_generator(input_spoint, input_enpoint)
+        list(card_number_generator(input_spoint, input_enpoint))
 
 
 @pytest.mark.parametrize(
@@ -46,7 +46,7 @@ def test_incorrect_data_card(input_spoint, input_enpoint):
 )
 def test_wrong_points(input_spoint, input_enpoint):
     with pytest.raises(ValueError):
-        card_number_generator(input_spoint, input_enpoint)
+        list(card_number_generator(input_spoint, input_enpoint))
 
 
 @pytest.mark.parametrize(
