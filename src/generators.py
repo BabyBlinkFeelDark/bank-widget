@@ -1,3 +1,6 @@
+from typing import Generator
+
+
 def card_number_generator(start_point: int, end_point: int) -> list:
     """
     Генерирует список номеров карт в формате строк с разбивкой каждые 4 символа пробелом.
@@ -16,7 +19,7 @@ def card_number_generator(start_point: int, end_point: int) -> list:
     if end_point > max_card_number:
         raise ValueError(f"The end_point cannot exceed {max_card_number}")
 
-    def infinite_sequence(start: int):
+    def infinite_sequence(start: int) -> Generator[int, None, None]:
         point = start
         while True:
             yield point
@@ -24,24 +27,10 @@ def card_number_generator(start_point: int, end_point: int) -> list:
 
     card_numbers = infinite_sequence(start_point)
 
-    result = []
-    for _ in range(end_point - start_point + 1):
-        card_number = str(next(card_numbers)).zfill(16)  # Получить одно значение
-        formatted_card = " ".join(card_number[i : i + 4] for i in range(0, 16, 4))
-        result.append(formatted_card)
-
-    return result
-
-    # if end_point > max_card_number:
-    #     raise IndexError("The card number limit has been exceeded!")
-    # if start_point >= end_point:
-    #     raise IndexError("start_point must be less than end_point!")
-    # if start_point < end_point:
-    #     result = [
-    #         " ".join(number[i : i + 4] for i in range(0, len(number), 4))
-    #         for number in (str(i).zfill(16) for i in range(start_point, end_point + 1))
-    #     ]
-    # return result
+    for number in range(start_point, end_point + 1):
+        card_number = str(number).zfill(16)  # Приведение к 16 символам с лидирующими нулями
+        formatted_card = " ".join(card_number[i : i + 4] for i in range(0, 16, 4))  # Разделение каждые 4 символа
+        yield formatted_card
 
 
 def filter_by_currency(transactions: list, currency: str) -> list:
@@ -57,11 +46,10 @@ def filter_by_currency(transactions: list, currency: str) -> list:
         raise TypeError("The transaction list is empty or not a list!")
     if not all(isinstance(item, dict) for item in transactions):
         raise TypeError("The transaction list contains incorrect data!")
-    return [
-        transaction
-        for transaction in transactions
-        if transaction.get("operationAmount", {}).get("currency", {}).get("code", {}) == currency
-    ]
+
+    for transaction in transactions:
+        if transaction.get("operationAmount", {}).get("currency", {}).get("code", {}) == currency:
+            yield transaction
 
 
 def transaction_descriptions(transactions: list) -> list:
@@ -70,12 +58,14 @@ def transaction_descriptions(transactions: list) -> list:
 
     :param transactions: Список транзакций, каждая из которых представлена словарем.
     :return: Список строк с описаниями транзакций.
-    :raises TypeError: Если список транзакций некорректен или содержит некорректные данные.
+    :raises TypeError: Если список транзакций некорректен.
     """
     if not isinstance(transactions, list) or not transactions:
         raise TypeError("Invalid or empty transaction list!")
     if not all(isinstance(item, dict) for item in transactions):
         raise TypeError("The transaction list contains incorrect data!")
-    return [
-        transaction.get("description") for transaction in transactions if transaction.get("description") is not None
-    ]
+
+    for transaction in transactions:
+        description = transaction.get("description")
+        if isinstance(description, str):
+            yield description

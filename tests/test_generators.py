@@ -3,7 +3,7 @@ from src.generators import filter_by_currency, transaction_descriptions, card_nu
 
 
 @pytest.mark.parametrize(
-    "input_spoint,input_enpoint, expected_output",
+    "input_spoint, input_enpoint, expected_output",
     [
         (
             1,
@@ -27,7 +27,8 @@ from src.generators import filter_by_currency, transaction_descriptions, card_nu
     ],
 )
 def test_card_generator(input_spoint, input_enpoint, expected_output):
-    assert card_number_generator(input_spoint, input_enpoint) == expected_output
+    result = list(card_number_generator(input_spoint, input_enpoint))
+    assert result == expected_output
 
 
 @pytest.mark.parametrize(
@@ -36,7 +37,7 @@ def test_card_generator(input_spoint, input_enpoint, expected_output):
 )
 def test_incorrect_data_card(input_spoint, input_enpoint):
     with pytest.raises(TypeError):
-        card_number_generator(input_spoint, input_enpoint)
+        list(card_number_generator(input_spoint, input_enpoint))
 
 
 @pytest.mark.parametrize(
@@ -45,7 +46,7 @@ def test_incorrect_data_card(input_spoint, input_enpoint):
 )
 def test_wrong_points(input_spoint, input_enpoint):
     with pytest.raises(ValueError):
-        card_number_generator(input_spoint, input_enpoint)
+        list(card_number_generator(input_spoint, input_enpoint))
 
 
 @pytest.mark.parametrize(
@@ -108,13 +109,16 @@ def test_filter_by_currency(transactions, currency_code, expected_output):
 
 def test_incorrect_list(empty_lists):
     with pytest.raises(TypeError):
-        test_filter_by_currency(empty_lists)
+        list(test_filter_by_currency(empty_lists))
 
 
 def test_correct_output_transaction_descriptions(test_transaction_descriptions):
-    assert transaction_descriptions(test_transaction_descriptions) == ["Перевод организации", "Перевод организации"]
+    assert list(transaction_descriptions(test_transaction_descriptions)) == [
+        "Перевод организации",
+        "Перевод организации",
+    ]
 
 
 def test_incorrect_list_transaction_descriptions(empty_lists):
     with pytest.raises(TypeError):
-        transaction_descriptions(empty_lists)
+        list(transaction_descriptions(empty_lists))
