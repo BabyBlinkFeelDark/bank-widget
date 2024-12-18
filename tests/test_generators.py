@@ -109,11 +109,11 @@ def test_filter_by_currency(transactions, currency_code, expected_output):
 
 def test_incorrect_list(empty_lists):
     with pytest.raises(TypeError):
-        test_filter_by_currency(empty_lists)
+        list(test_filter_by_currency(empty_lists))
 
 
 def test_correct_output_transaction_descriptions(test_transaction_descriptions):
-    assert transaction_descriptions(test_transaction_descriptions) == ["Перевод организации", "Перевод организации"]
+    assert list(transaction_descriptions(test_transaction_descriptions)) == ["Перевод организации", "Перевод организации"]
 
 
 def test_incorrect_list_transaction_descriptions(empty_lists):

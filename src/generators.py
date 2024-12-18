@@ -47,12 +47,10 @@ def filter_by_currency(transactions: list, currency: str) -> list:
         raise TypeError("The transaction list is empty or not a list!")
     if not all(isinstance(item, dict) for item in transactions):
         raise TypeError("The transaction list contains incorrect data!")
-    return [
-        transaction
-        for transaction in transactions
-        if transaction.get("operationAmount", {}).get("currency", {}).get("code", {}) == currency
-    ]
 
+    for transaction in transactions:
+        if transaction.get("operationAmount", {}).get("currency", {}).get("code", {}) == currency:
+            yield transaction
 
 def transaction_descriptions(transactions: list) -> list:
     """
