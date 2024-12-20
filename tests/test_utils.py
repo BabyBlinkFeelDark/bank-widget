@@ -32,6 +32,19 @@ def test_parser_empty_file():
         result = parser("empty_file.json")
         assert result == []
 
+
+def test_transactions_summary_rub():
+    transaction = {
+        "code": "RUB",
+        "operationAmount": {
+            "currency": {"code": "RUB"},
+            "amount": 100.0
+        }
+    }
+    result = transactions_summary(transaction)
+    assert result == 100.0
+
+
 def test_transactions_summary():
     with patch('requests.get') as mock_get, patch('os.getenv', return_value="mock_token"):
         mock_get.return_value.json.return_value = {'result': 100.5}
@@ -46,3 +59,8 @@ def test_transactions_summary():
         }
         result = transactions_summary(transaction)
         assert result == 100.5
+
+
+def test_transactions_summary_invalid_transaction():
+    with pytest.raises(ValueError, match="Транзакция должна быть словарём"):
+        transactions_summary("invalid_transaction")
