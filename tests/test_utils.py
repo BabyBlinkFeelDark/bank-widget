@@ -4,7 +4,6 @@ import json
 from unittest.mock import Mock, patch, mock_open
 
 
-
 def test_parser():
     mock_json = Mock(return_value=[{"data":"value"}])
     parser = mock_json
@@ -14,6 +13,18 @@ def test_parser():
 def test_parser_file_not_found():
     result = parser("non_existent_file.json")
     assert result == []
+
+
+def test_parser_invalid_json():
+    with patch("builtins.open", mock_open(read_data="{тут ничего нет}")):
+        result = parser("invalid_file.json")
+        assert result == []
+
+
+def test_parser_not_a_list():
+    with patch("builtins.open", mock_open(read_data=json.dumps({"key": "value"}))):
+        result = parser("not_a_list.json")
+        assert result == []
 
 
 def test_parser_empty_file():

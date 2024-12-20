@@ -14,6 +14,8 @@ def parser(file_path: str) -> list[dict]:
 
 
 def transactions_summary(transaction: dict) -> float:
+    if not isinstance(transaction, dict):
+        raise ValueError("Транзакция должна быть словарём")
     if transaction.get("code")!='RUB':
         load_dotenv()
         rez = convert(transaction.get("operationAmount", {}).get("currency", {}).get("code", {}), transaction.get("operationAmount", {}).get("amount", {}), os.getenv("API_TOKEN"))
