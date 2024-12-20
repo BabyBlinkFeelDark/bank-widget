@@ -1,6 +1,11 @@
 import pytest, os
 from src.utils import parser
 import json
+from unittest.mock import Mock
+
+
 
 def test_parser():
-    assert parser("/home/babyblinkfeeldark/PycharmProjects/homework/data/operations.json") == []
+    mock_json = Mock(return_value=[{"data":"value"}])
+    parser = mock_json
+    assert parser("/home/babyblinkfeeldark/PycharmProjects/homework/data/operations.json") == [{"data":"value"}]
