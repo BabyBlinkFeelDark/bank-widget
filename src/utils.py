@@ -11,7 +11,7 @@ def transactions_summary(transaction):
         load_dotenv()
         rez = convert(transaction.get("operationAmount", {}).get("currency", {}).get("code", {}), transaction.get("operationAmount", {}).get("amount", {}), os.getenv("API_TOKEN"))
     else:
-        rez = float(transaction.get("operationAmount", {}).get("currency", {}).get("amount", {}))
-    return rez
+        rez = transaction.get("operationAmount", {}).get("currency", {}).get("amount", {})
+    return float(rez)
 
 
