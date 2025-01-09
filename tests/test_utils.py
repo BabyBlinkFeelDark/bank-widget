@@ -35,14 +35,22 @@ def test_parser_empty_file():
 
 def test_transactions_summary_rub():
     transaction = {
-        "code": "RUB",
-        "operationAmount": {
-            "currency": {"code": "RUB"},
-            "amount": 100.0
-        }
-    }
+    "id": 441945886,
+    "state": "EXECUTED",
+    "date": "2019-08-26T10:50:58.294041",
+    "operationAmount": {
+      "amount": "31957.58",
+      "currency": {
+        "name": "руб.",
+        "code": "RUB"
+      }
+    },
+    "description": "Перевод организации",
+    "from": "Maestro 1596837868705199",
+    "to": "Счет 64686473678894779589"
+  }
     result = transactions_summary(transaction)
-    assert result == 100.0
+    assert result == 31957.58
 
 
 def test_transactions_summary():

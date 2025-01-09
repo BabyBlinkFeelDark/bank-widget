@@ -39,4 +39,4 @@ def transactions_summary(transaction: dict) -> float:
 #     "to": "Счет 64686473678894779589"
 #   }))
 
-print(parser("/home/babyblinkfeeldark/PycharmProjects/homework/data/operations.json"))
+# print(parser("/home/babyblinkfeeldark/PycharmProjects/homework/data/operations.json"))
