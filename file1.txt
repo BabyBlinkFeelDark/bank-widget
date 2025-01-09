@@ -1,28 +1,56 @@
-Wed Dec 18 12:19:41 2024: get_mask_account ok
-Wed Dec 18 12:19:41 2024: get_mask_account error: Invalid account. Inputs: ('',)
+Thu Jan  9 11:29:26 2025: get_mask_account ok
+Thu Jan  9 11:29:26 2025: get_mask_account error: Invalid account. Inputs: ('',)
 
-Wed Dec 18 12:19:41 2024: get_mask_account error: Invalid account. Inputs: ('12121',)
+Thu Jan  9 11:29:26 2025: get_mask_account error: Invalid account. Inputs: ('12121',)
 
-Wed Dec 18 12:19:41 2024: get_mask_account error: Invalid account. Inputs: ('Счет',)
+Thu Jan  9 11:29:26 2025: get_mask_account error: Invalid account. Inputs: ('Счет',)
 
-Wed Dec 18 12:19:41 2024: get_mask_account error: Invalid account. Inputs: ('',)
+Thu Jan  9 11:29:26 2025: get_mask_account error: Invalid account. Inputs: ('',)
 
-Wed Dec 18 12:19:41 2024: get_mask_account error: object of type 'NoneType' has no len(). Inputs: (None,)
+Thu Jan  9 11:29:26 2025: get_mask_account error: object of type 'NoneType' has no len(). Inputs: (None,)
 
-Wed Dec 18 12:19:41 2024: get_mask_account ok
-Wed Dec 18 12:19:41 2024: get_mask_account ok
-Wed Dec 18 12:19:41 2024: get_mask_account ok
-Wed Dec 18 12:21:01 2024: get_mask_account ok
-Wed Dec 18 12:21:01 2024: get_mask_account error: Invalid account. Inputs: ('',)
+Thu Jan  9 11:29:26 2025: get_mask_account ok
+Thu Jan  9 11:29:26 2025: get_mask_account ok
+Thu Jan  9 11:29:27 2025: get_mask_account ok
+Thu Jan  9 11:30:43 2025: get_mask_account ok
+Thu Jan  9 11:30:43 2025: get_mask_account error: Invalid account. Inputs: ('',)
 
-Wed Dec 18 12:21:01 2024: get_mask_account error: Invalid account. Inputs: ('12121',)
+Thu Jan  9 11:30:43 2025: get_mask_account error: Invalid account. Inputs: ('12121',)
 
-Wed Dec 18 12:21:01 2024: get_mask_account error: Invalid account. Inputs: ('Счет',)
+Thu Jan  9 11:30:43 2025: get_mask_account error: Invalid account. Inputs: ('Счет',)
 
-Wed Dec 18 12:21:01 2024: get_mask_account error: Invalid account. Inputs: ('',)
+Thu Jan  9 11:30:43 2025: get_mask_account error: Invalid account. Inputs: ('',)
 
-Wed Dec 18 12:21:01 2024: get_mask_account error: object of type 'NoneType' has no len(). Inputs: (None,)
+Thu Jan  9 11:30:43 2025: get_mask_account error: object of type 'NoneType' has no len(). Inputs: (None,)
 
-Wed Dec 18 12:21:01 2024: get_mask_account ok
-Wed Dec 18 12:21:01 2024: get_mask_account ok
-Wed Dec 18 12:21:01 2024: get_mask_account ok
+Thu Jan  9 11:30:43 2025: get_mask_account ok
+Thu Jan  9 11:30:43 2025: get_mask_account ok
+Thu Jan  9 11:30:43 2025: get_mask_account ok
+Thu Jan  9 11:43:30 2025: get_mask_account ok
+Thu Jan  9 11:43:30 2025: get_mask_account error: Invalid account. Inputs: ('',)
+
+Thu Jan  9 11:43:30 2025: get_mask_account error: Invalid account. Inputs: ('12121',)
+
+Thu Jan  9 11:43:30 2025: get_mask_account error: Invalid account. Inputs: ('Счет',)
+
+Thu Jan  9 11:43:30 2025: get_mask_account error: Invalid account. Inputs: ('',)
+
+Thu Jan  9 11:43:30 2025: get_mask_account error: object of type 'NoneType' has no len(). Inputs: (None,)
+
+Thu Jan  9 11:43:30 2025: get_mask_account ok
+Thu Jan  9 11:43:30 2025: get_mask_account ok
+Thu Jan  9 11:43:32 2025: get_mask_account ok
+Thu Jan  9 11:45:54 2025: get_mask_account ok
+Thu Jan  9 11:45:54 2025: get_mask_account error: Invalid account. Inputs: ('',)
+
+Thu Jan  9 11:45:54 2025: get_mask_account error: Invalid account. Inputs: ('12121',)
+
+Thu Jan  9 11:45:54 2025: get_mask_account error: Invalid account. Inputs: ('Счет',)
+
+Thu Jan  9 11:45:54 2025: get_mask_account error: Invalid account. Inputs: ('',)
+
+Thu Jan  9 11:45:54 2025: get_mask_account error: object of type 'NoneType' has no len(). Inputs: (None,)
+
+Thu Jan  9 11:45:54 2025: get_mask_account ok
+Thu Jan  9 11:45:54 2025: get_mask_account ok
+Thu Jan  9 11:45:55 2025: get_mask_account ok
