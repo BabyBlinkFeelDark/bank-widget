@@ -25,8 +25,6 @@ def card_number_generator(start_point: int, end_point: int) -> list:
             yield point
             point += 1
 
-    card_numbers = infinite_sequence(start_point)
-
     for number in range(start_point, end_point + 1):
         card_number = str(number).zfill(16)  # Приведение к 16 символам с лидирующими нулями
         formatted_card = " ".join(card_number[i : i + 4] for i in range(0, 16, 4))  # Разделение каждые 4 символа

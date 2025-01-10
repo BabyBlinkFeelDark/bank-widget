@@ -1,9 +1,5 @@
 import time
-
 from typing import Any, Callable, Optional
-
-
-
 
 
 def log(filename: str = "") -> Callable:

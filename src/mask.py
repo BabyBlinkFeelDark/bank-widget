@@ -3,15 +3,14 @@ import os
 
 from src.decorators import log
 
-
-card_logger = logging.getLogger('mask.get_mask_card_number')
-account_logger = logging.getLogger('mask.get_mask_account')
+card_logger = logging.getLogger("mask.get_mask_card_number")
+account_logger = logging.getLogger("mask.get_mask_account")
 if not os.path.isdir("../log"):
     os.mkdir("../log")
-file_handler = logging.FileHandler('../log/mask.log', 'w')
+file_handler = logging.FileHandler("../log/mask.log", "w")
 card_logger.addHandler(file_handler)
 account_logger.addHandler(file_handler)
-file_formatter = logging.Formatter('%(asctime)s %(levelname)s: %(name)s %(message)s')
+file_formatter = logging.Formatter("%(asctime)s %(levelname)s: %(name)s %(message)s")
 file_handler.setFormatter(file_formatter)
 card_logger.addHandler(file_handler)
 account_logger.addHandler(file_handler)

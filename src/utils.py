@@ -1,24 +1,24 @@
-import json, os
+import json
 import logging
+import os
 
-from src.external_api import convert
 from dotenv import load_dotenv
 
+from src.external_api import convert
 
-parser_logger = logging.getLogger('utils.parser')
-ts_logger = logging.getLogger('utils.transactions_summary')
+parser_logger = logging.getLogger("utils.parser")
+ts_logger = logging.getLogger("utils.transactions_summary")
 if not os.path.isdir("../log"):
     os.mkdir("../log")
-file_handler = logging.FileHandler('../log/utils.log', 'w')
+file_handler = logging.FileHandler("../log/utils.log", "w")
 parser_logger.addHandler(file_handler)
 ts_logger.addHandler(file_handler)
-file_formatter = logging.Formatter('%(asctime)s %(levelname)s: %(name)s %(message)s')
+file_formatter = logging.Formatter("%(asctime)s %(levelname)s: %(name)s %(message)s")
 file_handler.setFormatter(file_formatter)
 parser_logger.addHandler(file_handler)
 ts_logger.addHandler(file_handler)
 parser_logger.setLevel(logging.DEBUG)
 ts_logger.setLevel(logging.DEBUG)
-
 
 
 def parser(file_path: str) -> list[dict]:
@@ -36,7 +36,7 @@ def parser(file_path: str) -> list[dict]:
         with open(file_path, "r") as f:
             data = json.load(f)
             if not isinstance(data, list):
-                parser_logger.warning("Некорректные данные")# Проверяем, что это список
+                parser_logger.warning("Некорректные данные")  # Проверяем, что это список
                 return []
             parser_logger.info("Парсинг успешен")
             return data
@@ -81,4 +81,3 @@ def transactions_summary(transaction: dict) -> float:
     else:
         rez = transaction.get("operationAmount", {}).get("currency", {}).get("amount", {})
     return float(rez)
-
