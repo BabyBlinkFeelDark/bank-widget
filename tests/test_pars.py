@@ -29,3 +29,7 @@ def test_pars_csv_empty_file(tmp_path):
 def test_pars_csv_invalid_path():
     with pytest.raises(FileNotFoundError):
         pars_csv("alahamora.csv")
+
+def test_pars_csv_file_not_found():
+    with pytest.raises(FileNotFoundError):
+        pars_csv("uncorrected file path")
