@@ -4,12 +4,8 @@ import logging
 from src.external_api import convert
 from dotenv import load_dotenv
 
-logger = logging.getLogger(__name__)
 if not os.path.isdir("../log"):
     os.mkdir("../log")
-file_handler = logging.FileHandler()
-logger.addHandler(file_handler)
-file_formatter = logging.Formatter()
 # Основная конфигурация logging
 logging.basicConfig(level=logging.DEBUG,
                     format='%(asctime)s %(levelname)s: %(filename)s %(message)s',
@@ -35,11 +31,13 @@ def parser(file_path: str) -> list[dict]:
     try:
         with open(file_path, "r") as f:
             data = json.load(f)
-            if not isinstance(data, list):  # Проверяем, что это список
+            if not isinstance(data, list):
+                parser_logger.warning("Некорректные данные")# Проверяем, что это список
                 return []
-            parser_logger.info("Все круто")
+            parser_logger.info("Парсинг успешен")
             return data
     except (FileNotFoundError, json.JSONDecodeError):
+        parser_logger.warning("Файл не найден")  # Проверяем, что это список
         return []
 
 
@@ -67,6 +65,7 @@ def transactions_summary(transaction: dict) -> float:
         ValueError: Если `transaction` не является словарём.
     """
     if not isinstance(transaction, dict):
+        parser_logger.critical("Транзакция должна быть словарём")  # Проверяем, что это список
         raise ValueError("Транзакция должна быть словарём")
     if transaction.get("code") != "RUB":
         load_dotenv()
@@ -80,3 +79,5 @@ def transactions_summary(transaction: dict) -> float:
     return float(rez)
 
 # parser('/home/babyblinkfeeldark/PycharmProjects/homework/data/operations.json')
+parser("/home/babyblinkfeeldark/PycharmProjects/homework/data/test")
+transactions_summary(52)
