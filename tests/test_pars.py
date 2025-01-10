@@ -50,7 +50,7 @@ def test_pars_xlsx_success(create_test_xlsx):
     pd.testing.assert_frame_equal(result, expected_data)
 
 def test_pars_xlsx_file_not_found():
-    with pytest.raises(FileNotFoundError, match="Файл не найден"):
+    with pytest.raises(FileNotFoundError, match="Файл .* не найден"):
         pars_xlsx("non_existent_file.xlsx")
 
 def test_pars_xlsx_invalid_file_format(tmp_path):
@@ -58,3 +58,9 @@ def test_pars_xlsx_invalid_file_format(tmp_path):
     invalid_file.write_text("Некорректный файл")
     with pytest.raises(Exception):
         pars_xlsx(invalid_file)
+
+def test_pars_xlsx_empty_file(tmp_path):
+    empty_file = tmp_path / "empty.xlsx"
+    pd.DataFrame().to_excel(empty_file, index=False)
+    with pytest.raises(ValueError, match="Файл пустой"):
+        pars_xlsx(empty_file)
