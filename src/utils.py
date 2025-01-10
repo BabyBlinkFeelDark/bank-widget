@@ -1,6 +1,24 @@
 import json, os
+import logging
+
 from src.external_api import convert
 from dotenv import load_dotenv
+
+logger = logging.getLogger(__name__)
+if not os.path.isdir("../log"):
+    os.mkdir("../log")
+file_handler = logging.FileHandler()
+logger.addHandler(file_handler)
+file_formatter = logging.Formatter()
+# Основная конфигурация logging
+logging.basicConfig(level=logging.DEBUG,
+                    format='%(asctime)s %(levelname)s: %(filename)s %(message)s',
+                    filename='../log/unils.log',  # Запись логов в файл
+                    filemode='w')  # Перезапись файла при каждом запуске
+
+# Создаем логеры для различных компонентов программы
+parser_logger = logging.getLogger('utils.parser')
+ts_logger = logging.getLogger('utils.transactions_summary')
 
 
 def parser(file_path: str) -> list[dict]:
@@ -19,6 +37,7 @@ def parser(file_path: str) -> list[dict]:
             data = json.load(f)
             if not isinstance(data, list):  # Проверяем, что это список
                 return []
+            parser_logger.info("Все круто")
             return data
     except (FileNotFoundError, json.JSONDecodeError):
         return []
@@ -59,3 +78,5 @@ def transactions_summary(transaction: dict) -> float:
     else:
         rez = transaction.get("operationAmount", {}).get("currency", {}).get("amount", {})
     return float(rez)
+
+# parser('/home/babyblinkfeeldark/PycharmProjects/homework/data/operations.json')
