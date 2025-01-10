@@ -29,6 +29,7 @@ python-dotenv = "^1.0.1"
 
 [tool.poetry.group.parsing.dependencies]
 pandas = "^2.2.3"
+openpyxl = "^3.1.5"
 
 [build-system]
 requires = ["poetry-core"]

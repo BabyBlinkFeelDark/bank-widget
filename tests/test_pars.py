@@ -1,6 +1,7 @@
-import csv
+import csv, pandas as pd
 import pytest
-from src.pars import pars_csv
+from src.pars import pars_csv,pars_xlsx
+
 
 @pytest.fixture
 def create_test_csv(tmp_path):
@@ -26,10 +27,36 @@ def test_pars_csv_empty_file(tmp_path):
     result = pars_csv(empty_file)
     assert result == []
 
-def test_pars_csv_invalid_path():
-    with pytest.raises(FileNotFoundError):
-        pars_csv("alahamora.csv")
-
 def test_pars_csv_file_not_found():
     with pytest.raises(FileNotFoundError):
         pars_csv("uncorrected file path")
+
+
+@pytest.fixture
+def create_test_xlsx(tmp_path):
+    # Создаем временный Excel-файл с тестовыми данными
+    file_path = tmp_path / "test.xlsx"
+    test_data = {
+        ["650703","EXECUTED","2023-09-05T11:30:32Z","16210"],
+        ["16210","EXECUTED","2023-09-05T11:30:32Z","16210"],
+        ["650703","EXECUTED","2023-09-05T11:30:32Z","650703"],
+    }
+    df = pd.DataFrame(test_data)
+    df.to_excel(file_path, index=False)
+    return file_path, df.head()
+
+def test_pars_xlsx_success(create_test_xlsx):
+    file_path, expected_data = create_test_xlsx
+    result = pars_xlsx(file_path)
+    pd.testing.assert_frame_equal(result, expected_data)
+
+def test_pars_xlsx_file_not_found():
+    with pytest.raises(FileNotFoundError, match="Файл не найден"):
+        pars_xlsx("non_existent_file.xlsx")
+
+def test_pars_xlsx_invalid_file_format(tmp_path):
+    # Создаем файл с некорректным форматом (не Excel)
+    invalid_file = tmp_path / "test.txt"
+    invalid_file.write_text("Некорректный файл")
+    with pytest.raises(Exception):  # Ожидаем любое исключение
+        pars_xlsx(invalid_file)
