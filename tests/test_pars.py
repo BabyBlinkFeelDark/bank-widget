@@ -23,12 +23,12 @@ def test_pars_csv_success(create_test_csv):
 
 def test_pars_csv_empty_file(tmp_path):
     empty_file = tmp_path / "empty.csv"
-    empty_file.touch()  # Создаем пустой файл
+    empty_file.touch()
     with pytest.raises(ValueError, match="Файл пустой"):
         pars_csv(empty_file)
 
 def test_pars_csv_file_not_found():
-    with pytest.raises(FileNotFoundError, match="Файл .* не найден"):
+    with pytest.raises(FileNotFoundError, match="Файл не найден"):
         pars_csv("non_existent_file.csv")
 
 
@@ -50,7 +50,7 @@ def test_pars_xlsx_success(create_test_xlsx):
     pd.testing.assert_frame_equal(result, expected_data)
 
 def test_pars_xlsx_file_not_found():
-    with pytest.raises(FileNotFoundError, match="Файл .* не найден"):
+    with pytest.raises(FileNotFoundError, match="Файл не найден"):
         pars_xlsx("non_existent_file.xlsx")
 
 def test_pars_xlsx_invalid_file_format(tmp_path):
