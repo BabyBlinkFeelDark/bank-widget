@@ -82,6 +82,3 @@ def transactions_summary(transaction: dict) -> float:
         rez = transaction.get("operationAmount", {}).get("currency", {}).get("amount", {})
     return float(rez)
 
-# parser('/home/babyblinkfeeldark/PycharmProjects/homework/data/operations.json')
-parser("/home/babyblinkfeeldark/PycharmProjects/homework/data/test")
-transactions_summary(52)

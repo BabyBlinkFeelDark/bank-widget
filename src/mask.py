@@ -4,11 +4,11 @@ import os
 from src.decorators import log
 
 
-card_logger = logging.getLogger('utils.parser')
-account_logger = logging.getLogger('utils.transactions_summary')
+card_logger = logging.getLogger('mask.get_mask_card_number')
+account_logger = logging.getLogger('mask.get_mask_account')
 if not os.path.isdir("../log"):
     os.mkdir("../log")
-file_handler = logging.FileHandler('../log/utils.log', 'w')
+file_handler = logging.FileHandler('../log/mask.log', 'w')
 card_logger.addHandler(file_handler)
 account_logger.addHandler(file_handler)
 file_formatter = logging.Formatter('%(asctime)s %(levelname)s: %(name)s %(message)s')
@@ -42,5 +42,7 @@ def get_mask_account(card_num: str) -> str:
     :return: Маскированный номер счета
     """
     if len(card_num) != 20:
+        account_logger.error("Несуществующий номер счета")
         raise TypeError("Invalid account")
+    account_logger.info("Счет успешно замаскирован")
     return f"**{card_num[-4:]}"
