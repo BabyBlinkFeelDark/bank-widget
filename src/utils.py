@@ -4,17 +4,21 @@ import logging
 from src.external_api import convert
 from dotenv import load_dotenv
 
-if not os.path.isdir("../log"):
-    os.mkdir("../log")
-# Основная конфигурация logging
-logging.basicConfig(level=logging.DEBUG,
-                    format='%(asctime)s %(levelname)s: %(filename)s %(message)s',
-                    filename='../log/unils.log',  # Запись логов в файл
-                    filemode='w')  # Перезапись файла при каждом запуске
 
-# Создаем логеры для различных компонентов программы
 parser_logger = logging.getLogger('utils.parser')
 ts_logger = logging.getLogger('utils.transactions_summary')
+if not os.path.isdir("../log"):
+    os.mkdir("../log")
+file_handler = logging.FileHandler('../log/utils.log', 'w')
+parser_logger.addHandler(file_handler)
+ts_logger.addHandler(file_handler)
+file_formatter = logging.Formatter('%(asctime)s %(levelname)s: %(name)s %(message)s')
+file_handler.setFormatter(file_formatter)
+parser_logger.addHandler(file_handler)
+ts_logger.addHandler(file_handler)
+parser_logger.setLevel(logging.DEBUG)
+ts_logger.setLevel(logging.DEBUG)
+
 
 
 def parser(file_path: str) -> list[dict]:
@@ -65,7 +69,7 @@ def transactions_summary(transaction: dict) -> float:
         ValueError: Если `transaction` не является словарём.
     """
     if not isinstance(transaction, dict):
-        parser_logger.critical("Транзакция должна быть словарём")  # Проверяем, что это список
+        parser_logger.error("Транзакция должна быть словарём")  # Проверяем, что это список
         raise ValueError("Транзакция должна быть словарём")
     if transaction.get("code") != "RUB":
         load_dotenv()
