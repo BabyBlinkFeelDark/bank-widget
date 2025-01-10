@@ -26,6 +26,10 @@ pytest-cov = "^6.0.0"
 [tool.poetry.group.env.dependencies]
 python-dotenv = "^1.0.1"
 
+
+[tool.poetry.group.parsing.dependencies]
+pandas = "^2.2.3"
+
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
