@@ -16,4 +16,4 @@ def pars_xlsx(file_path: str):
         raise FileNotFoundError("Файл не найден")
 
 # print(pars_csv('/home/babyblinkfeeldark/PycharmProjects/homework/data/transactions.csv'))
-print(pars_xlsx('/home/babyblinkfeeldark/PycharmProjects/homework/data/transactions_excel.xlsx'))
+# print(pars_xlsx('/home/babyblinkfeeldark/PycharmProjects/homework/data/transactions_excel.xlsx'))

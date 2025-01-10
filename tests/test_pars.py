@@ -34,12 +34,11 @@ def test_pars_csv_file_not_found():
 
 @pytest.fixture
 def create_test_xlsx(tmp_path):
-    # Создаем временный Excel-файл с тестовыми данными
     file_path = tmp_path / "test.xlsx"
     test_data = {
-        ["650703","EXECUTED","2023-09-05T11:30:32Z","16210"],
-        ["16210","EXECUTED","2023-09-05T11:30:32Z","16210"],
-        ["650703","EXECUTED","2023-09-05T11:30:32Z","650703"],
+        "heaader1" : ["650703","EXECUTED","2023-09-05T11:30:32Z","16210"],
+        "heaader2" : ["16210","EXECUTED","2023-09-05T11:30:32Z","16210"],
+        "heaader3" : ["650703","EXECUTED","2023-09-05T11:30:32Z","650703"],
     }
     df = pd.DataFrame(test_data)
     df.to_excel(file_path, index=False)
@@ -55,8 +54,7 @@ def test_pars_xlsx_file_not_found():
         pars_xlsx("non_existent_file.xlsx")
 
 def test_pars_xlsx_invalid_file_format(tmp_path):
-    # Создаем файл с некорректным форматом (не Excel)
     invalid_file = tmp_path / "test.txt"
     invalid_file.write_text("Некорректный файл")
-    with pytest.raises(Exception):  # Ожидаем любое исключение
+    with pytest.raises(Exception):
         pars_xlsx(invalid_file)
