@@ -20,8 +20,10 @@ def pars_xlsx(file_path: str) -> pd.DataFrame:
         if reader.empty:
             raise ValueError("Файл пустой")
         return reader.head()
-    except:
-        raise FileNotFoundError("Файл не найден")
+    except FileNotFoundError:
+        raise FileNotFoundError(f"Файл {file_path} не найден")
+    except Exception as e:
+        raise RuntimeError(f"Ошибка при работе с файлом {file_path}: {e}")
 
 # print(pars_csv('/home/babyblinkfeeldark/PycharmProjects/homework/data/transactions.csv'))
 # print(pars_xlsx('/home/babyblinkfeeldark/PycharmProjects/homework/data/transactions_excel.xlsx'))

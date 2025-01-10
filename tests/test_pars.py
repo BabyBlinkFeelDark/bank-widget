@@ -22,14 +22,14 @@ def test_pars_csv_success(create_test_csv):
     assert result == expected_data
 
 def test_pars_csv_empty_file(tmp_path):
-    empty_file = tmp_path / "heh.csv"
+    empty_file = tmp_path / "empty.csv"
     empty_file.touch()  # Создаем пустой файл
-    result = pars_csv(empty_file)
-    assert result == []
+    with pytest.raises(ValueError, match="Файл пустой"):
+        pars_csv(empty_file)
 
 def test_pars_csv_file_not_found():
-    with pytest.raises(FileNotFoundError):
-        pars_csv("uncorrected file path")
+    with pytest.raises(FileNotFoundError, match="Файл .* не найден"):
+        pars_csv("non_existent_file.csv")
 
 
 @pytest.fixture
