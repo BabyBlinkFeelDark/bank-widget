@@ -28,7 +28,7 @@ def test_pars_csv_success(create_test_csv):
 def test_pars_csv_empty_file(tmp_path):
     empty_file = tmp_path / "empty.csv"
     empty_file.touch()
-    with pytest.raises(ValueError, match="Файл пустой"):
+    with pytest.raises(ValueError, match="Файл пустой или не содержит данных"):
         pars_csv(empty_file)
 
 def test_pars_csv_file_not_found():

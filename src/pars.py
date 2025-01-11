@@ -20,8 +20,7 @@ def pars_csv(file_path: str) -> List[Dict[str, str]]:
             return data
     except FileNotFoundError:
         raise FileNotFoundError(f"Файл {file_path} не найден")
-    except Exception as e:
-        raise RuntimeError(f"Ошибка при обработке файла: {e}")
+
 
 
 def pars_xlsx(file_path: str) -> pd.DataFrame:
