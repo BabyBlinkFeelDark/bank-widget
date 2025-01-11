@@ -25,7 +25,7 @@ test_data = [
             "state": "EXECUTED",
             "date": "2018-06-30T02:08:58.425572",
             "operationAmount": {"amount": "9824.07", "currency": {"name": "USD", "code": "USD"}},
-            "description": "Перев0д организации",
+            "description": "Перевод организации",
             "from": "Счет 75106830613657916952",
             "to": "Счет 11776614605963066702",
         },
@@ -54,6 +54,5 @@ def count_operations_by_category(data: List[Dict[str, str]], categories: List[st
         description = item.get("description")
         if description and description in categories:
             category_count[description] += 1
-    return dict(category_count)
 
-print(count_operations_by_category(test_data, ['Перевд организации']))
+    return dict(category_count)

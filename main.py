@@ -1,5 +1,17 @@
 from src.widget import get_date, mask_account_card
 
-print(get_date("2024-03-11T02:26:18.671407"))
-print(mask_account_card("Visa Platinum 7000792289606361"))
-print(mask_account_card("Счет 64686473678894779589"))
+def start():
+    print("""Привет! Добро пожаловать в программу работы 
+        с банковскими транзакциями. 
+        Выберите необходимый пункт меню:
+        1. Получить информацию о транзакциях из JSON-файла
+        2. Получить информацию о транзакциях из CSV-файла
+        3. Получить информацию о транзакциях из XLSX-файла""")
+    answer: str
+    choose_operation = input()
+    print("""Введите статус, по которому необходимо выполнить фильтрацию. 
+            Доступные для фильтровки статусы: EXECUTED, CANCELED, PENDING""")
+    choose_status = input()
+
+
+start()
