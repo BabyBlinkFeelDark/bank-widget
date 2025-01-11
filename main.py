@@ -1,4 +1,5 @@
 from src.generators import filter_by_currency
+from src.pars import pars_xlsx, pars_csv
 from src.processing import filter_by_state, sort_by_date
 from src.searcher import search_for_str, count_operations_by_category
 from src.utils import parser, transactions_summary
@@ -81,11 +82,11 @@ def start():
 answers = start()
 match answers['choose_operation']:
     case '1':
-        operations = filter_by_state(parser('/home/babyblinkfeeldark/PycharmProjects/homework/data/operations.json'), answers['choose_status'].upper())
+        operations = filter_by_state(parser('./data/operations.json'), answers['choose_status'].upper())
     case '2':
-        operations = {"hello word"}
+        operations = pars_csv('./data/transactions.csv')
     case '3':
-        operations = {"hello word"}
+        operations = pars_xlsx('./data/transactions_excel.xlsx')
 
 if answers['choose_data_sort'].lower() == 'да':
     if answers['choose_data_sort_cur'].lower() == 'по возрастанию':
@@ -109,7 +110,15 @@ else:
             {mask_account_card(oper.get('to', {}))}
             Сумма: {transactions_summary(oper)}""")
         else:
-            print(f"""{get_date(oper.get('date', {}))} {oper.get('description', {})}
-            {str(oper.get('from', {}))} {mask_account_card(str(oper.get('from', {})))} -> {mask_account_card(str(oper.get('to', {})))}
-            Сумма: {transactions_summary(oper)}""")
+            from_account = str(oper.get('from', {})) if oper.get('from', {}) else ''
+            to_account = str(oper.get('to', {}))
+
+            if from_account:
+                print(f"""{get_date(oper.get('date', {}))} {oper.get('description', {})}
+                {from_account} {mask_account_card(from_account)} -> {mask_account_card(to_account)}
+                Сумма: {transactions_summary(oper)}""")
+            else:
+                print(f"""{get_date(oper.get('date', {}))} {oper.get('description', {})}
+                {mask_account_card(to_account)}
+                Сумма: {transactions_summary(oper)}""")
 

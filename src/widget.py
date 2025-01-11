@@ -26,7 +26,7 @@ def get_date(current_time: str) -> str:
     :return: Время в формате DD.MM.YYYY
     """
 
-    pattern = r"^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:.\d{1,6})?$"
+    pattern = r"^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d{1,6})?(?:Z)?$"
 
     # Проверка соответствия
     if not re.fullmatch(pattern, current_time):
