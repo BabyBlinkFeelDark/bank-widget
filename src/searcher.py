@@ -48,12 +48,12 @@ def search_for_str(data: List[Dict], target: str) -> List[Dict]:
     result = [item for item in data if search_in_dict(item, target)]
     return result
 
-def count_operations_by_category(data: List[Dict[str, str]]) -> Dict[str, int]:
+def count_operations_by_category(data: List[Dict[str, str]], categories: List[str]) -> Dict[str, int]:
     category_count = defaultdict(int)
     for item in data:
         description = item.get("description")
-        if description:
+        if description and description in categories:
             category_count[description] += 1
     return dict(category_count)
 
-print(count_operations_by_category(test_data))
+print(count_operations_by_category(test_data, ['Перевд организации']))
