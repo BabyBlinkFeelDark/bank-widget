@@ -1,5 +1,8 @@
-import re,collections
+import re
+from collections import defaultdict
 from typing import List, Dict
+
+from numpy.ma.core import count
 
 test_data = [
         {
@@ -45,5 +48,12 @@ def search_for_str(data: List[Dict], target: str) -> List[Dict]:
     result = [item for item in data if search_in_dict(item, target)]
     return result
 
+def count_operations_by_category(data: List[Dict[str, str]]) -> Dict[str, int]:
+    category_count = defaultdict(int)
+    for item in data:
+        description = item.get("description")
+        if description:
+            category_count[description] += 1
+    return dict(category_count)
 
-
+print(count_operations_by_category(test_data))
