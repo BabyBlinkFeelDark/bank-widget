@@ -105,15 +105,19 @@ if operations == []:
     print("Не найдено ни одной транзакции, подходящей под ваши условия фильтрации")
 else:
     for oper in operations:
-        if oper.get('description', '').lower() == 'открытие счета':
+        if str(oper.get('description', '')).lower() == 'открытие счета':
             print(f"""{get_date(oper.get('date', {}))} {oper.get('description', {})}
             {mask_account_card(oper.get('to', {}))}""")  # Сумма не выводится
+        if str(oper.get('description', '')).lower() == 'открытие вклада':
+            print(f"""{get_date(oper.get('date', {}))} {oper.get('description', {})}
+                    {mask_account_card(oper.get('to', {}))}""")  # Сумма не выводится
         else:
             from_account = str(oper.get('from', {})) if oper.get('from', {}) else ''
             to_account = str(oper.get('to', {}))
 
             if from_account:
-                # Проверяем, если данные из JSON, то добавляем сумму
+                if to_account == ";;;;;;;;" or not to_account:
+                    continue
                 if 'operationAmount' in oper:
                     print(f"""{get_date(oper.get('date', {}))} {oper.get('description', {})}
                     {from_account} {mask_account_card(from_account)} -> {mask_account_card(to_account)}
@@ -122,7 +126,8 @@ else:
                     print(f"""{get_date(oper.get('date', {}))} {oper.get('description', {})}
                     {from_account} {mask_account_card(from_account)} -> {mask_account_card(to_account)}""")
             else:
-                # Проверяем, если данные из JSON, то добавляем сумму
+                if to_account == ";;;;;;;;" or not to_account:
+                    continue
                 if 'operationAmount' in oper:
                     print(f"""{get_date(oper.get('date', {}))} {oper.get('description', {})}
                     {mask_account_card(to_account)}
