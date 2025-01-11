@@ -42,15 +42,8 @@ def search_for_str(data: List[Dict], target: str) -> List[Dict]:
                 return True
         return False
 
-    for item in data:
-        if search_in_dict(item, target):
-            return list(item)
+    result = [item for item in data if search_in_dict(item, target)]
+    return result
 
 
-print(search_for_str(test_data, "руб."))
-
-# print(test_data[0])
-#
-# for k,v in test_data[0].items():
-#     print(k, " ", v)
 
