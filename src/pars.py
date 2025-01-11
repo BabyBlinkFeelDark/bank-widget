@@ -1,24 +1,26 @@
 import csv, pandas as pd
-from typing import List, Union
+from typing import List, Dict
 
-def pars_csv(file_path: str) -> List[List[str]]:
+def pars_csv(file_path: str) -> List[Dict[str, str]]:
     """
-    Считывает данные из CSV-файла и возвращает их в виде списка строк.
+    Считывает данные из CSV-файла и возвращает их в виде списка словарей.
+    Первая строка файла используется как ключи для словарей.
 
     :param file_path: Путь к CSV-файлу.
-    :return: Данные файла в формате списка списков.
+    :return: Данные файла в формате списка словарей.
     :raises FileNotFoundError: Если файл не найден.
-    :raises ValueError: Если файл пустой.
+    :raises ValueError: Если файл пустой или первая строка отсутствует.
     """
     try:
-        with open(file_path) as file:
-            reader = csv.reader(file)
+        with open(file_path, newline='') as file:
+            reader = csv.DictReader(file, delimiter=';')
             data = list(reader)
             if not data:
-                raise ValueError("Файл пустой")
+                raise ValueError("Файл пустой или не содержит данных")
             return data
     except FileNotFoundError:
-        raise FileNotFoundError("Файл не найден")
+        raise FileNotFoundError(f"Файл {file_path} не найден")
+
 
 
 def pars_xlsx(file_path: str) -> pd.DataFrame:
@@ -34,10 +36,7 @@ def pars_xlsx(file_path: str) -> pd.DataFrame:
         reader = pd.read_excel(file_path)
         if reader.empty:
             raise ValueError("Файл пустой")
-        return reader.head()
+        return reader.to_dict(orient='records')
     except FileNotFoundError:
         raise FileNotFoundError("Файл не найден")
 
-
-# print(pars_csv('/home/babyblinkfeeldark/PycharmProjects/homework/data/transactions.csv'))
-# print(pars_xlsx('/home/babyblinkfeeldark/PycharmProjects/homework/data/transactions_excel.xlsx'))

@@ -5,7 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="dcb54d01-dff3-4abf-ad3e-e53af91387ed" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pars.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/pars.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,7 +22,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="develop" />
+        <entry key="$PROJECT_DIR$" value="feature/homework_12.2" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -70,26 +70,42 @@
     "Python tests.pytest for test_mask.test_correct_data_account.executor": "Run",
     "Python tests.pytest for test_mask.test_correct_output_mask_account.executor": "Run",
     "Python tests.pytest for test_mask.test_correct_output_mask_number.executor": "Run",
+    "Python tests.pytest for test_pars.test_pars_csv_empty_file.executor": "Run",
+    "Python tests.pytest for test_pars.test_pars_csv_file_not_found.executor": "Run",
+    "Python tests.pytest for test_pars.test_pars_csv_invalid_path.executor": "Run",
+    "Python tests.pytest for test_pars.test_pars_csv_success.executor": "Run",
+    "Python tests.pytest for test_pars.test_pars_xlsx_file_not_found.executor": "Run",
     "Python tests.pytest for test_processing.test_filter_by_state_with_agr.executor": "Run",
     "Python tests.pytest for test_processing.test_filter_by_state_without_arg.executor": "Run",
     "Python tests.pytest for test_processing.test_incorrect_date.executor": "Run",
     "Python tests.pytest for test_processing.test_sort_by_date_with_arg.executor": "Run",
     "Python tests.pytest for test_processing.test_sort_by_date_without_arg.executor": "Run",
+    "Python tests.pytest in test_pars.py.executor": "Run",
     "Python tests.pytest in test_processing.py.executor": "Run",
     "Python tests.pytest in test_widget.py.executor": "Run",
     "Python.decorators.executor": "Run",
     "Python.generators.executor": "Run",
     "Python.main.executor": "Run",
     "Python.mask.executor": "Run",
+    "Python.pars.executor": "Run",
     "Python.processing.executor": "Run",
+    "Python.utils.executor": "Run",
     "Python.widget.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "feature/homework__10__1",
-    "last_opened_file_path": "/home/babyblinkfeeldark/PycharmProjects/pars_dashbord",
+    "git-widget-placeholder": "feature/homework__13.1",
+    "last_opened_file_path": "/home/babyblinkfeeldark/PycharmProjects/homework/data",
     "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
   }
 }]]></component>
-  <component name="RunManager" selected="Python tests.pytest for test_decorators.test_log_error_in_file">
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/data" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/data" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Python tests.pytest for test_pars.test_pars_xlsx_file_not_found">
     <configuration name="main" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="homework" />
       <option name="ENV_FILES" value="" />
@@ -113,7 +129,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="pytest for test_decorators.test_log" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
+    <configuration name="pytest for test_pars.test_pars_csv_empty_file" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
       <module name="homework" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -126,11 +142,11 @@
       <option name="_new_keywords" value="&quot;&quot;" />
       <option name="_new_parameters" value="&quot;&quot;" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_decorators.test_log&quot;" />
+      <option name="_new_target" value="&quot;test_pars.test_pars_csv_empty_file&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="pytest for test_decorators.test_log_err" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
+    <configuration name="pytest for test_pars.test_pars_csv_file_not_found" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
       <module name="homework" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -143,11 +159,11 @@
       <option name="_new_keywords" value="&quot;&quot;" />
       <option name="_new_parameters" value="&quot;&quot;" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_decorators.test_log_err&quot;" />
+      <option name="_new_target" value="&quot;test_pars.test_pars_csv_file_not_found&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="pytest for test_decorators.test_log_error_in_file" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
+    <configuration name="pytest for test_pars.test_pars_csv_invalid_path" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
       <module name="homework" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -160,11 +176,11 @@
       <option name="_new_keywords" value="&quot;&quot;" />
       <option name="_new_parameters" value="&quot;&quot;" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_decorators.test_log_error_in_file&quot;" />
+      <option name="_new_target" value="&quot;test_pars.test_pars_csv_invalid_path&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="pytest for test_decorators.test_log_file_creation" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
+    <configuration name="pytest for test_pars.test_pars_csv_success" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
       <module name="homework" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -177,11 +193,11 @@
       <option name="_new_keywords" value="&quot;&quot;" />
       <option name="_new_parameters" value="&quot;&quot;" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_decorators.test_log_file_creation&quot;" />
+      <option name="_new_target" value="&quot;test_pars.test_pars_csv_success&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="pytest for test_decorators.test_log_without_log_param" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
+    <configuration name="pytest for test_pars.test_pars_xlsx_file_not_found" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
       <module name="homework" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -194,17 +210,17 @@
       <option name="_new_keywords" value="&quot;&quot;" />
       <option name="_new_parameters" value="&quot;&quot;" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_decorators.test_log_without_log_param&quot;" />
+      <option name="_new_target" value="&quot;test_pars.test_pars_xlsx_file_not_found&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python tests.pytest for test_decorators.test_log_error_in_file" />
-        <item itemvalue="Python tests.pytest for test_decorators.test_log_file_creation" />
-        <item itemvalue="Python tests.pytest for test_decorators.test_log" />
-        <item itemvalue="Python tests.pytest for test_decorators.test_log_without_log_param" />
-        <item itemvalue="Python tests.pytest for test_decorators.test_log_err" />
+        <item itemvalue="Python tests.pytest for test_pars.test_pars_xlsx_file_not_found" />
+        <item itemvalue="Python tests.pytest for test_pars.test_pars_csv_empty_file" />
+        <item itemvalue="Python tests.pytest for test_pars.test_pars_csv_file_not_found" />
+        <item itemvalue="Python tests.pytest for test_pars.test_pars_csv_invalid_path" />
+        <item itemvalue="Python tests.pytest for test_pars.test_pars_csv_success" />
       </list>
     </recent_temporary>
   </component>
