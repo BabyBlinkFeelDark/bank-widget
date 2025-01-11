@@ -101,10 +101,25 @@ if answers['choose_filt'].lower() == 'да':
     keyword = input("Введите категорию: ")
     operations = search_for_str(operations, keyword)
 
+
+
+
+
+
+
+
+
+operations = [
+    op for op in operations
+    if any(value and str(value).strip() for value in op.values())
+]
+operations = [op for op in operations if all(value is not None and value == value for value in op.values())]
 if operations == []:
     print("Не найдено ни одной транзакции, подходящей под ваши условия фильтрации")
 else:
     for oper in operations:
+        print(oper)
+
         if str(oper.get('description', '')).lower() == 'открытие счета':
             print(f"""{get_date(oper.get('date', {}))} {oper.get('description', {})}
             {mask_account_card(oper.get('to', {}))}""")  # Сумма не выводится
@@ -116,8 +131,6 @@ else:
             to_account = str(oper.get('to', {}))
 
             if from_account:
-                if to_account == ";;;;;;;;" or not to_account:
-                    continue
                 if 'operationAmount' in oper:
                     print(f"""{get_date(oper.get('date', {}))} {oper.get('description', {})}
                     {from_account} {mask_account_card(from_account)} -> {mask_account_card(to_account)}
@@ -126,8 +139,6 @@ else:
                     print(f"""{get_date(oper.get('date', {}))} {oper.get('description', {})}
                     {from_account} {mask_account_card(from_account)} -> {mask_account_card(to_account)}""")
             else:
-                if to_account == ";;;;;;;;" or not to_account:
-                    continue
                 if 'operationAmount' in oper:
                     print(f"""{get_date(oper.get('date', {}))} {oper.get('description', {})}
                     {mask_account_card(to_account)}
