@@ -118,32 +118,36 @@ if operations == []:
     print("Не найдено ни одной транзакции, подходящей под ваши условия фильтрации")
 else:
     for oper in operations:
-        print(oper)
+        print(oper.get("operationAmount", {}).get("currency", {}).get("amount", {}))
+        if oper !={}:
 
-        if str(oper.get('description', '')).lower() == 'открытие счета':
-            print(f"""{get_date(oper.get('date', {}))} {oper.get('description', {})}
-            {mask_account_card(oper.get('to', {}))}""")  # Сумма не выводится
-        if str(oper.get('description', '')).lower() == 'открытие вклада':
-            print(f"""{get_date(oper.get('date', {}))} {oper.get('description', {})}
-                    {mask_account_card(oper.get('to', {}))}""")  # Сумма не выводится
-        else:
-            from_account = str(oper.get('from', {})) if oper.get('from', {}) else ''
-            to_account = str(oper.get('to', {}))
 
-            if from_account:
-                if 'operationAmount' in oper:
-                    print(f"""{get_date(oper.get('date', {}))} {oper.get('description', {})}
-                    {from_account} {mask_account_card(from_account)} -> {mask_account_card(to_account)}
-                    Сумма: {transactions_summary(oper)}""")
-                else:
-                    print(f"""{get_date(oper.get('date', {}))} {oper.get('description', {})}
-                    {from_account} {mask_account_card(from_account)} -> {mask_account_card(to_account)}""")
+            if str(oper.get('description', '')).lower() == 'открытие счета':
+                print(f"""{get_date(oper.get('date', {}))} {oper.get('description', {})}
+                {mask_account_card(oper.get('to', {}))}""")
+            if str(oper.get('description', '')).lower() == 'открытие вклада':
+                print(f"""{get_date(oper.get('date', {}))} {oper.get('description', {})}
+                        {mask_account_card(oper.get('to', {}))}""")
             else:
-                if 'operationAmount' in oper:
-                    print(f"""{get_date(oper.get('date', {}))} {oper.get('description', {})}
-                    {mask_account_card(to_account)}
-                    Сумма: {transactions_summary(oper)}""")
-                else:
-                    print(f"""{get_date(oper.get('date', {}))} {oper.get('description', {})}
-                    {mask_account_card(to_account)}""")
+                from_account = str(oper.get('from', {})) if oper.get('from', {}) else ''
+                to_account = str(oper.get('to', {}))
+                operation_amount = oper.get("operationAmount", {})
+                amount = operation_amount.get("amount")
+                currency = operation_amount.get("currency", {}).get("name", "")
 
+                if from_account:
+                    if amount:
+                        print(f"""{get_date(oper.get('date', {}))} {oper.get('description', {})}
+                                {mask_account_card(from_account)} -> {mask_account_card(to_account)}
+                                Сумма: {amount} {currency}""")
+                    else:
+                        print(f"""{get_date(oper.get('date', {}))} {oper.get('description', {})}
+                                {mask_account_card(from_account)} -> {mask_account_card(to_account)}""")
+                else:
+                    if amount:
+                        print(f"""{get_date(oper.get('date', {}))} {oper.get('description', {})}
+                                {mask_account_card(to_account)}
+                                Сумма: {amount} {currency}""")
+                    else:
+                        print(f"""{get_date(oper.get('date', {}))} {oper.get('description', {})}
+                                {mask_account_card(to_account)}""")
