@@ -100,4 +100,6 @@ if answers['choose_filt'].lower() == 'да':
     keyword = input("Введите категорию: ")
     operations = search_for_str(operations, keyword)
 
-print(list(operations))
+for oper in operations:
+    print(f"""{get_date(oper.get('date', {}))} {oper.get('description', {})}
+    {oper.get('from', {})} -> {oper.get('to', {})}""")
