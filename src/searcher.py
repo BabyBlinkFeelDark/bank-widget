@@ -29,15 +29,23 @@ test_data = [
     ]
 
 
-def search_for_str(data: List[Dict], target: str):
-    for i in range(len(data)):
-        for k, v in test_data[0].items():
-            if isinstance(v,dict):
-                print(v.values())
-            trans = re.findall(target, str(v))
-            if trans != []:
-                print(trans," i = ", i)
-                return data[i]
+def search_for_str(data: List[Dict], target: str) -> List[Dict]:
+    def search_in_dict(d: Dict, target: str) -> bool:
+        for key, value in d.items():
+            if isinstance(value, dict):
+                if search_in_dict(value, target):
+                    return True
+            elif isinstance(value, (list)):
+                if any(search_in_dict(item, target) if isinstance(item, dict) else re.search(target, str(item)) for item in value):
+                    return True
+            elif re.search(target, str(value)):
+                return True
+        return False
+
+    for item in data:
+        if search_in_dict(item, target):
+            return list(item)
+
 
 print(search_for_str(test_data, "руб."))
 
