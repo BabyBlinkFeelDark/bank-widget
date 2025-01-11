@@ -51,6 +51,26 @@ def start():
         print("Некорректный статус")
         choose_status(d)
 
+    choose_data_sort(d)
+    while d['choose_data_sort'].lower() not in ['да', 'нет']:
+        print("Некорректный статус")
+        choose_data_sort(d)
+
+    choose_data_sort_cur(d)
+    while d['choose_data_sort_cur'].lower() not in ['по возрастанию', 'по убыванию']:
+        print("Некорректный статус")
+        choose_data_sort_cur(d)
+
+    choose_currency(d)
+    while d['choose_currency'].lower() not in ['да', 'нет']:
+        print("Некорректный статус")
+        choose_currency(d)
+
+    choose_filt(d)
+    while d['choose_filt'].lower() not in ['да', 'нет']:
+        print("Некорректный статус")
+        choose_filt(d)
+
     print(d)
 
 start()
