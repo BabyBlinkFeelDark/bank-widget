@@ -1,3 +1,5 @@
+from src.processing import filter_by_state
+from src.utils import parser
 from src.widget import get_date, mask_account_card
 
 def choose_operation():
@@ -71,6 +73,14 @@ def start():
         print("Некорректный статус")
         choose_filt(d)
 
-    print(d)
+    return d
 
-start()
+answers = start()
+match answers['choose_operation']:
+    case '1':
+        print(filter_by_state(parser('/home/babyblinkfeeldark/PycharmProjects/homework/data/operations.json'), answers['choose_status'].upper()))
+    case '2':
+        print("hello word")
+    case '3':
+        print("hello word")
+
