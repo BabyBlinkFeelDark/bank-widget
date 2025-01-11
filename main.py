@@ -58,10 +58,11 @@ def start():
         print("Некорректный статус")
         choose_data_sort(d)
 
-    choose_data_sort_cur(d)
-    while d['choose_data_sort_cur'].lower() not in ['по возрастанию', 'по убыванию']:
-        print("Некорректный статус")
+    if d['choose_data_sort'].lower() == 'да':
         choose_data_sort_cur(d)
+        while d['choose_data_sort_cur'].lower() not in ['по возрастанию', 'по убыванию']:
+            print("Некорректный ответ на сортировку по дате")
+            choose_data_sort_cur(d)
 
     choose_currency(d)
     while d['choose_currency'].lower() not in ['да', 'нет']:
@@ -78,9 +79,9 @@ def start():
 answers = start()
 match answers['choose_operation']:
     case '1':
-        print(filter_by_state(parser('/home/babyblinkfeeldark/PycharmProjects/homework/data/operations.json'), answers['choose_status'].upper()))
+        operations = filter_by_state(parser('/home/babyblinkfeeldark/PycharmProjects/homework/data/operations.json'), answers['choose_status'].upper())
     case '2':
-        print("hello word")
+        operations = "hello word"
     case '3':
-        print("hello word")
+        operations = "hello word"
 
