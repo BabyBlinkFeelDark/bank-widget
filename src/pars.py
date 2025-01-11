@@ -23,7 +23,7 @@ def pars_csv(file_path: str) -> List[Dict[str, str]]:
     except Exception as e:
         raise RuntimeError(f"Ошибка при обработке файла: {e}")
 
-print(pars_csv('/home/babyblinkfeeldark/PycharmProjects/homework/data/transactions.csv'))
+
 def pars_xlsx(file_path: str) -> pd.DataFrame:
     """
     Считывает данные из Excel-файла и возвращает первые 5 строк.
@@ -37,7 +37,7 @@ def pars_xlsx(file_path: str) -> pd.DataFrame:
         reader = pd.read_excel(file_path)
         if reader.empty:
             raise ValueError("Файл пустой")
-        return reader.head()
+        return reader.to_dict(orient='records')
     except FileNotFoundError:
         raise FileNotFoundError("Файл не найден")
 
