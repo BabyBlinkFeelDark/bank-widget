@@ -18,7 +18,7 @@ card_logger.setLevel(logging.DEBUG)
 account_logger.setLevel(logging.DEBUG)
 
 
-@log()
+# @log()
 def get_mask_card_number(card_num: str) -> str:
     """
     Маскирует номер кредитной карты, оставляя видимыми только первые 6 и последние 4 цифры.
@@ -33,7 +33,7 @@ def get_mask_card_number(card_num: str) -> str:
         return card_num[:4] + " " + card_num[4:6] + "XX XXXX " + card_num[-4:]
 
 
-@log("file1.txt")
+# @log("file1.txt")
 def get_mask_account(card_num: str) -> str:
     """
     Маскирует номер счета, оставляя видимыми только последние 4 цифры.

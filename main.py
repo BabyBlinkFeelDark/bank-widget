@@ -1,7 +1,7 @@
 from src.generators import filter_by_currency
 from src.processing import filter_by_state, sort_by_date
 from src.searcher import search_for_str, count_operations_by_category
-from src.utils import parser
+from src.utils import parser, transactions_summary
 from src.widget import get_date, mask_account_card
 
 def choose_operation():
@@ -100,6 +100,16 @@ if answers['choose_filt'].lower() == 'да':
     keyword = input("Введите категорию: ")
     operations = search_for_str(operations, keyword)
 
-for oper in operations:
-    print(f"""{get_date(oper.get('date', {}))} {oper.get('description', {})}
-    {oper.get('from', {})} -> {oper.get('to', {})}""")
+if operations == []:
+    print("Не найдено ни одной транзакции, подходящей под ваши условия фильтрации")
+else:
+    for oper in operations:
+        if oper.get('description', '').lower() == 'открытие счета':
+            print(f"""{get_date(oper.get('date', {}))} {oper.get('description', {})}
+            {mask_account_card(oper.get('to', {}))}
+            Сумма: {transactions_summary(oper)}""")
+        else:
+            print(f"""{get_date(oper.get('date', {}))} {oper.get('description', {})}
+            {str(oper.get('from', {}))} {mask_account_card(str(oper.get('from', {})))} -> {mask_account_card(str(oper.get('to', {})))}
+            Сумма: {transactions_summary(oper)}""")
+
