@@ -1,4 +1,6 @@
-from src.processing import filter_by_state
+from src.generators import filter_by_currency
+from src.processing import filter_by_state, sort_by_date
+from src.searcher import search_for_str, count_operations_by_category
 from src.utils import parser
 from src.widget import get_date, mask_account_card
 
@@ -81,7 +83,21 @@ match answers['choose_operation']:
     case '1':
         operations = filter_by_state(parser('/home/babyblinkfeeldark/PycharmProjects/homework/data/operations.json'), answers['choose_status'].upper())
     case '2':
-        operations = "hello word"
+        operations = {"hello word"}
     case '3':
-        operations = "hello word"
+        operations = {"hello word"}
 
+if answers['choose_data_sort'].lower() == 'да':
+    if answers['choose_data_sort_cur'].lower() == 'по возрастанию':
+        operations = sort_by_date(operations)
+    elif answers['choose_data_sort_cur'].lower() == 'по убыванию':
+        operations = sort_by_date(operations, "DESC")
+
+if answers['choose_currency'].lower() == 'да':
+    operations = filter_by_currency(operations, 'RUB')
+
+if answers['choose_filt'].lower() == 'да':
+    keyword = input("Введите категорию: ")
+    operations = search_for_str(operations, keyword)
+
+print(list(operations))
