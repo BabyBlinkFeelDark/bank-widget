@@ -92,7 +92,7 @@ if answers['choose_data_sort'].lower() == 'да':
     if answers['choose_data_sort_cur'].lower() == 'по возрастанию':
         operations = sort_by_date(operations)
     elif answers['choose_data_sort_cur'].lower() == 'по убыванию':
-        operations = sort_by_date(operations, "DESC")
+        operations = sort_by_date(operations, "DECS")
 
 if answers['choose_currency'].lower() == 'да':
     operations = filter_by_currency(operations, 'RUB')
@@ -100,14 +100,6 @@ if answers['choose_currency'].lower() == 'да':
 if answers['choose_filt'].lower() == 'да':
     keyword = input("Введите категорию: ")
     operations = search_for_str(operations, keyword)
-
-
-
-
-
-
-
-
 
 operations = [
     op for op in operations
@@ -118,7 +110,6 @@ if operations == []:
     print("Не найдено ни одной транзакции, подходящей под ваши условия фильтрации")
 else:
     for oper in operations:
-        print(oper.get("operationAmount", {}).get("currency", {}).get("amount", {}))
         if oper !={}:
 
 
