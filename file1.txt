@@ -44,3 +44,17 @@ Sun Jan 12 13:26:12 2025: get_mask_account error: object of type 'NoneType' has 
 Sun Jan 12 13:26:12 2025: get_mask_account ok
 Sun Jan 12 13:26:12 2025: get_mask_account ok
 Sun Jan 12 13:26:13 2025: get_mask_account ok
+Sun Jan 12 13:28:09 2025: get_mask_account ok
+Sun Jan 12 13:28:09 2025: get_mask_account error: Invalid account. Inputs: ('',)
+
+Sun Jan 12 13:28:09 2025: get_mask_account error: Invalid account. Inputs: ('12121',)
+
+Sun Jan 12 13:28:09 2025: get_mask_account error: Invalid account. Inputs: ('Счет',)
+
+Sun Jan 12 13:28:09 2025: get_mask_account error: Invalid account. Inputs: ('',)
+
+Sun Jan 12 13:28:09 2025: get_mask_account error: object of type 'NoneType' has no len(). Inputs: (None,)
+
+Sun Jan 12 13:28:09 2025: get_mask_account ok
+Sun Jan 12 13:28:09 2025: get_mask_account ok
+Sun Jan 12 13:28:10 2025: get_mask_account ok

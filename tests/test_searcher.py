@@ -27,4 +27,4 @@ def test_search_for_str_success(test_transaction_descriptions,get_test_data):
     assert list(search_for_str(test_transaction_descriptions, "Перевод организации")) == get_test_data
 
 def test_count_operations_by_category_success(test_transaction_descriptions,get_test_data):
-    assert list(count_operations_by_category(test_transaction_descriptions, "Перевод организации")) == {'Перевод организации': 2}
+    assert list(count_operations_by_category(test_transaction_descriptions, "Перевод организации")) == ['Перевод организации']

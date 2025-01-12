@@ -27,4 +27,3 @@ def convert(currency, amount, token):
     )
     response_data = r.json()
     return response_data.get("result")
-
