@@ -68,6 +68,7 @@ def transactions_summary(transaction: dict) -> float:
     Raises:
         ValueError: Если `transaction` не является словарём.
     """
+    print(transaction.get("operationAmount", {}).get("amount", {}))
     if not isinstance(transaction, dict):
         parser_logger.error("Транзакция должна быть словарём")  # Проверяем, что это список
         raise ValueError("Транзакция должна быть словарём")
@@ -79,5 +80,7 @@ def transactions_summary(transaction: dict) -> float:
             os.getenv("API_TOKEN"),
         )
     else:
-        rez = transaction.get("operationAmount", {}).get("currency", {}).get("amount", {})
+
+        rez = transaction.get("operationAmount", {}).get("amount", {})
     return float(rez)
+

@@ -8,17 +8,17 @@ from src.widget import get_date, mask_account_card
 def choose_operation():
     answers = {}
     print("""Привет! Добро пожаловать в программу работы 
-        с банковскими транзакциями. 
-        Выберите необходимый пункт меню:
-        1. Получить информацию о транзакциях из JSON-файла
-        2. Получить информацию о транзакциях из CSV-файла
-        3. Получить информацию о транзакциях из XLSX-файла""")
+с банковскими транзакциями. 
+Выберите необходимый пункт меню:
+1. Получить информацию о транзакциях из JSON-файла
+2. Получить информацию о транзакциях из CSV-файла
+3. Получить информацию о транзакциях из XLSX-файла""")
     answers["choose_operation"] = input().lower()
     return answers
 
 def choose_status(answers):
     print("""Введите статус, по которому необходимо выполнить фильтрацию. 
-                Доступные для фильтровки статусы: EXECUTED, CANCELED, PENDING""")
+Доступные для фильтровки статусы: EXECUTED, CANCELED, PENDING""")
     answers['choose_status'] = input().lower()
     return answers
 
@@ -38,8 +38,7 @@ def choose_currency(answers):
     return answers
 
 def choose_filt(answers):
-    print("""Отфильтровать список транзакций по определенному слову 
-    в описании? Да/Нет""")
+    print("""Отфильтровать список транзакций по определенному слову в описании? Да/Нет""")
     answers['choose_filt'] = input()
     return answers
 
@@ -101,24 +100,43 @@ if answers['choose_filt'].lower() == 'да':
     keyword = input("Введите категорию: ")
     operations = search_for_str(operations, keyword)
 
+
+
 operations = [
     op for op in operations
     if any(value and str(value).strip() for value in op.values())
 ]
 operations = [op for op in operations if all(value is not None and value == value for value in op.values())]
+print("""
+
+Распечатываю итоговый список транзакций...
+""")
+if 'keyword' in globals():
+    keyword_list = []
+    keyword_list.append(keyword)
+    count_operations = count_operations_by_category(operations, keyword_list)
+else:
+    count_operations = count_operations_by_category(operations, [])
+
+
+    print(f"""
+Всего банковских операций в выборке: {sum(count_operations.values())}
+""")
+
 if operations == []:
     print("Не найдено ни одной транзакции, подходящей под ваши условия фильтрации")
 else:
     for oper in operations:
         if oper !={}:
 
-
             if str(oper.get('description', '')).lower() == 'открытие счета':
                 print(f"""{get_date(oper.get('date', {}))} {oper.get('description', {})}
-                {mask_account_card(oper.get('to', {}))}""")
+{mask_account_card(oper.get('to', {}))}
+""")
             if str(oper.get('description', '')).lower() == 'открытие вклада':
                 print(f"""{get_date(oper.get('date', {}))} {oper.get('description', {})}
-                        {mask_account_card(oper.get('to', {}))}""")
+{mask_account_card(oper.get('to', {}))}
+""")
             else:
                 from_account = str(oper.get('from', {})) if oper.get('from', {}) else ''
                 to_account = str(oper.get('to', {}))
@@ -129,16 +147,20 @@ else:
                 if from_account:
                     if amount:
                         print(f"""{get_date(oper.get('date', {}))} {oper.get('description', {})}
-                                {mask_account_card(from_account)} -> {mask_account_card(to_account)}
-                                Сумма: {amount} {currency}""")
+{mask_account_card(from_account)} -> {mask_account_card(to_account)}
+Сумма: {amount} {currency}
+""")
                     else:
                         print(f"""{get_date(oper.get('date', {}))} {oper.get('description', {})}
-                                {mask_account_card(from_account)} -> {mask_account_card(to_account)}""")
+{mask_account_card(from_account)} -> {mask_account_card(to_account)}
+""")
                 else:
                     if amount:
                         print(f"""{get_date(oper.get('date', {}))} {oper.get('description', {})}
-                                {mask_account_card(to_account)}
-                                Сумма: {amount} {currency}""")
+{mask_account_card(to_account)}
+Сумма: {amount} {currency}
+""")
                     else:
                         print(f"""{get_date(oper.get('date', {}))} {oper.get('description', {})}
-                                {mask_account_card(to_account)}""")
+{mask_account_card(to_account)}
+""")
