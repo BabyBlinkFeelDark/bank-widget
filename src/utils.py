@@ -79,8 +79,8 @@ def transactions_summary(transaction: dict) -> float:
             transaction.get("operationAmount", {}).get("amount", {}),
             os.getenv("API_TOKEN"),
         )
+        print(rez)
     else:
-
         rez = transaction.get("operationAmount", {}).get("amount", {})
     return float(rez)
 
